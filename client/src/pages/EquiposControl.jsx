@@ -2,25 +2,32 @@ import { getQ100 } from "../services/routes";
 import { useEffect, useState } from "react";
 import socket from "../socket/socket";
 
-
 const EquiposControl = () => {
-  let [realData, setRealData] = useState([]),
-    [selector, setSelector] = useState(0),
-    [inicio, setInicio] = useState(0),
-    [initGame, setInitGame] = useState(true),
-    [selectTeam, setSelectTeam] = useState(true),
-    [team2, setTeam2] = useState(""),
-    [team1, setTeam1] = useState(""),
-    [readyTeams, setReadyTeams] = useState(false),
-    [strike, setStrike] = useState(0),
-    [modoLibre, setModoLibre] = useState(false),
-    [q1, setQ1] = useState(false),
-    [q2, setQ2] = useState(false),
-    [q3, setQ3] = useState(false),
-    [q4, setQ4] = useState(false),
-    [q5, setQ5] = useState(false),
-    [suma, setSuma] = useState(0);
+  // ==================== ESTADO GENERAL ====================
+  const [realData, setRealData] = useState([]);
+  const [inicio, setInicio] = useState(0);
+  const [suma, setSuma] = useState(0);
 
+  // ==================== ESTADO DE EQUIPOS ====================
+  const [team1, setTeam1] = useState("");
+  const [team2, setTeam2] = useState("");
+  const [selectTeam, setSelectTeam] = useState(true);
+  const [readyTeams, setReadyTeams] = useState(false);
+
+  // ==================== ESTADO DEL JUEGO ====================
+  const [selector, setSelector] = useState(0);
+  const [initGame, setInitGame] = useState(true);
+  const [strike, setStrike] = useState(0);
+  const [modoLibre, setModoLibre] = useState(false);
+
+  // ==================== ESTADO DE RESPUESTAS ====================
+  const [q1, setQ1] = useState(false);
+  const [q2, setQ2] = useState(false);
+  const [q3, setQ3] = useState(false);
+  const [q4, setQ4] = useState(false);
+  const [q5, setQ5] = useState(false);
+
+  // ==================== FUNCIONES DE DATOS ====================
   const getData100 = async () => {
     const response = await getQ100();
     if (response.status === 200) {
@@ -34,20 +41,16 @@ const EquiposControl = () => {
     }, 1000);
   };
 
-  const selectorTitleMenos = () => {
-    setSelector(selector - 1);
+  // ==================== FUNCIONES DE SELECTOR DE PREGUNTA ====================
+  const handleSelectQuestion = (e) => {
+    const selectedIndex = parseInt(e.target.value);
+    setSelector(selectedIndex);
     socket.emit("selectTitle", {
-      title: selector - 1,
+      title: selectedIndex,
     });
   };
 
-  const selectorTitleMas = () => {
-    setSelector(selector + 1);
-    socket.emit("selectTitle", {
-      title: selector + 1,
-    });
-  };
-
+  // ==================== FUNCIONES DE PUNTOS ====================
   const sendValors = (number, puntos) => {
     if (modoLibre) {
       setTimeout(() => {
@@ -85,12 +88,15 @@ const EquiposControl = () => {
     }
   };
 
-  useEffect(() => {
-    socket.emit("sendStrike", {
-      strike: strike,
+  const sendPointsTeam = () => {
+    setModoLibre(true);
+    socket.emit("sendPoints", {
+      team: selectTeam,
+      suma: suma,
     });
-  }, [strike]);
+  };
 
+  // ==================== FUNCIONES DE EQUIPOS ====================
   const handlerNameTeam1 = (e) => {
     e.preventDefault();
     setTeam1(e.target.value);
@@ -99,25 +105,6 @@ const EquiposControl = () => {
   const handlerNameTeam2 = (e) => {
     e.preventDefault();
     setTeam2(e.target.value);
-    socket.emit("nameTeam2", {
-      name: team2,
-    });
-  };
-
-  useEffect(() => {
-    socket.emit("nameTeam1", {
-      name: team1,
-    });
-  }, [team1]);
-
-  useEffect(() => {
-    socket.emit("nameTeam2", {
-      name: team2,
-    });
-  }, [team2]);
-
-  const handlerReady = () => {
-    setReadyTeams(true);
   };
 
   const handlerSelectTeam = () => {
@@ -134,29 +121,27 @@ const EquiposControl = () => {
     }
   };
 
-  const sendPointsTeam = () => {
-    setModoLibre(true);
-    socket.emit("sendPoints", {
-      team: selectTeam,
-      suma: suma,
-    });
+  const handlerReady = () => {
+    setReadyTeams(true);
   };
 
+  // ==================== FUNCIONES DE RESET ====================
   const reset = () => {
     setSuma(0);
     setStrike(0);
     setInitGame(true);
     setModoLibre(false);
-    socket.emit("reset", {
-      reset: true,
-    });
     setQ1(false);
     setQ2(false);
     setQ3(false);
     setQ4(false);
     setQ5(false);
+    socket.emit("reset", {
+      reset: true,
+    });
   };
 
+  // ==================== FUNCIONES DE EVENTOS ====================
   const handleMouseDown = (event) => {
     if (event.button === 0) {
       console.log("izquierdo");
@@ -165,9 +150,31 @@ const EquiposControl = () => {
     }
   };
 
+  // ==================== EFECTOS ====================
+  useEffect(() => {
+    socket.emit("sendStrike", {
+      strike: strike,
+    });
+  }, [strike]);
+
+  useEffect(() => {
+    socket.emit("nameTeam1", {
+      name: team1,
+    });
+  }, [team1]);
+
+  useEffect(() => {
+    socket.emit("nameTeam2", {
+      name: team2,
+    });
+  }, [team2]);
+
+  // ==================== RENDER ====================
+
   return (
     <div id="divEquiposControl" onMouseDown={handleMouseDown}>
-      {readyTeams ? (
+      
+      {readyTeams ? ( //si readyTeam es false muestra los inputs para agregar los nombres de los equipos, si es true muestra los botones para seleccionar el equipo
         <div>
           {selectTeam ? (
             <button className="uno btn">{team1}</button>
@@ -185,8 +192,12 @@ const EquiposControl = () => {
           )}
         </div>
       ) : (
-        <div>
+        <div className="divInputsTeam">
           <div>
+            <h1>Agrega los nombres de los equipos</h1>
+          </div>
+          <div>
+           <div>
             <input
               type="text"
               name="team2"
@@ -194,9 +205,8 @@ const EquiposControl = () => {
               autoComplete="off"
               onChange={handlerNameTeam1}
             />
-          </div>
-
-          <div>
+           </div>
+           <div>
             <input
               type="text"
               name="team1"
@@ -204,18 +214,24 @@ const EquiposControl = () => {
               autoComplete="off"
               onChange={handlerNameTeam2}
             />
-          </div>
-          <div>
+           </div>
+           <div>
             <button onClick={handlerReady}>Aceptar</button>
-            
+           </div>
           </div>
+          
         </div>
       )}
+
+
+
+
 
       <div>
         {inicio == 0 && readyTeams ? (
           <button id="btnDatos" onClick={getData100}>Pedir datos</button>
         ) : (
+          readyTeams === false ? null :
           <div>
             <div>
               <button style={{ cursor: "pointer" }} onClick={reset}>
@@ -236,42 +252,48 @@ const EquiposControl = () => {
               </div>
             ) : null}
             {initGame ? (
-              <div>
-                <button
-                  onClick={() =>
-                    selectorTitleMenos(realData[selector - 1].title)
-                  }
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px" }}>
+                <label htmlFor="questionSelect" style={{ fontSize: "18px", fontWeight: "bold" }}>Selecciona pregunta:</label>
+                <select
+                  id="questionSelect"
+                  value={selector}
+                  onChange={handleSelectQuestion}
+                  style={{
+                    padding: "10px",
+                    fontSize: "16px",
+                    borderRadius: "5px",
+                    border: "2px solid #333",
+                    cursor: "pointer",
+                    backgroundColor: "white",
+                    minWidth: "250px"
+                  }}
                 >
-                  -
-                </button>
-                <h1> {selector} </h1>
-                <button
-                  onClick={() => selectorTitleMas(realData[selector + 1].title)}
-                >
-                  +
-                </button>
+                  {realData.map((question, index) => (
+                    <option key={index} value={index}>
+                      {index + 1}. {question.title}
+                    </option>
+                  ))}
+                </select>
               </div>
             ) : (
-              <div>
-                <button
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px" }}>
+                <label style={{ fontSize: "18px", fontWeight: "bold" }}>Pregunta:</label>
+                <select
+                  disabled
+                  value={selector}
                   style={{
+                    padding: "10px",
+                    fontSize: "16px",
+                    borderRadius: "5px",
+                    border: "2px solid #5953a8ff",
                     backgroundColor: "#5953a8ff",
+                    color: "white",
                     cursor: "not-allowed",
-                    border: "none",
+                    minWidth: "250px"
                   }}
                 >
-                  -
-                </button>
-                <h1> {selector} </h1>
-                <button
-                  style={{
-                    backgroundColor: "#5953a8ff",
-                    cursor: "not-allowed",
-                    border: "none",
-                  }}
-                >
-                  +
-                </button>
+                  <option>{selector + 1}. {realData[selector]?.title}</option>
+                </select>
               </div>
             )}
           </div>

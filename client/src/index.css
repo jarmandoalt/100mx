@@ -16,10 +16,10 @@
   --color-quest: rgba(36, 189, 22, 0.226);
   --color-answer: rgba(116, 153, 253, 0.616);
   --color-points-answer: rgb(80, 125, 248);
-  --color-hover-btn: #5953a8ff;
-  --color-btn:rgb(222, 227, 241);
+  --color-hover-btn: rgb(222, 227, 241);
+  --color-btn: #5953a8ff;
   --color-btn-press: rgb(111, 148, 252);
-  --color-btn-press-letra: rgb(66, 67, 70);
+  --color-btn-press-letra: whitesmoke;
   --bg-color: #1a1a1a;
   --board-bg: #2d2d2d;
   --number-off: #524cac;
@@ -401,13 +401,50 @@ button {
 
 /*Control 100 */
 
-#divEquiposControl {
+#divEquiposControl > div {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  justify-content: center;
+  margin-top: 5vh;
+}
+
+#divEquiposControl > div:nth-child(2) {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  justify-content: center;
+  margin-top: 5vh;
+}
+
+
+/*Aplica cuando estan los input para agregar los nombres de los equipos*/ 
+#divEquiposControl > div.divInputsTeam {
   display: flex;
   flex-direction: column;
   width: 90vw;
+  margin-top: 5vh;
+  justify-content: center;
 }
 
-#divEquiposControl > div {
+#divEquiposControl > div.divInputsTeam > div:first-child {
+  display: flex;
+  flex-direction: row;
+  width: 90vw;
+  justify-content: center;
+}
+
+#divEquiposControl > div.divInputsTeam > div:first-child > h1 {
+  width: 50vw;
+  text-align: center;
+  background-color:var(--color-hover-btn);
+  font-size: 2.5vw;  
+  margin-left: 10vw;
+  border-radius: 10px;
+  color: whitesmoke;
+}
+
+#divEquiposControl > div.divInputsTeam > div:last-child {
   display: flex;
   flex-direction: row;
   width: 90vw;
@@ -416,16 +453,16 @@ button {
   justify-content: center;
 }
 
-#divEquiposControl > div:first-child > div {
-  margin-left: 5vw;
+#divEquiposControl > div.divInputsTeam > div:last-child > div{
+margin-right: 3vw;
 }
 
-#divEquiposControl > div:first-child > div:first-child > input {
+#divEquiposControl > div.divInputsTeam > div:last-child > div > input {
     background-color:var(--color-hover-btn);
 
 }
 
-#divEquiposControl > div:first-child > div > input {
+#divEquiposControl > div.divInputsTeam > div:last-child > div > input {
   background-color:var(--color-hover-btn);
   border: none;
   width: 25vw;
@@ -435,9 +472,9 @@ button {
   border-radius: 5px;
 }
 
-#divEquiposControl > div:first-child > div > button {
+#divEquiposControl > div.divInputsTeam > div:last-child > div > button {
   width: 15vw;
-  height: 7vh;
+  height: 6vh;
   background-color: var(--color-btn);
   border: none;
   color: var(--color-btn-press);
@@ -445,9 +482,9 @@ button {
   font-size: 1.5vw;
 }
 
-#divEquiposControl > div:first-child > div > button:hover {
+#divEquiposControl > div.divInputsTeam > div:last-child > div > button:hover {
   background-color: var(--color-hover-btn);
-  color: whitesmoke;
+  color: rgb(66, 67, 70);
 }
 
 /*btn selector equipo */
@@ -486,7 +523,6 @@ button {
 /*btns apretados selector de equipo*/
 
 #divEquiposControl > div:first-child > button.uno.btn {
-  width: 20vw;
   font-size: 2vw;
   height: 10vh;
   border-style: dotted;
@@ -502,7 +538,6 @@ button {
 
 #divEquiposControl > div:first-child > button.dos.btn {
   margin-left: 2vw;
-  width: 20vw;
   font-size: 2vw;
   height: 10vh;
   border-style: dotted;
@@ -517,11 +552,13 @@ button {
 background-color: #5953a8ff;
 }
 
+/*div Pedir Datos, reset, select, strike*/
 #divEquiposControl > div:nth-child(2) {
   display: flex;
   flex-direction: row;
-  width: 80vw;
+  width: 95vw;
   height: 15vh;
+  align-items: center;
 }
 
 #divEquiposControl > div:nth-child(2) > div {

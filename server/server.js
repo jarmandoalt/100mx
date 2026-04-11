@@ -4,15 +4,17 @@ const connectdb = require("./db/mongodb");
 const { dbConfig } = require("./config");
 const SocketIo = require("socket.io");
 
-const server = app.listen(5050, () => {
+const server = app.listen(5050, '0.0.0.0', () => {
   connectdb(dbConfig);
   console.log(`server on port ${5050}`);
 });
 
-const io = SocketIo(server, {
+const io = require("socket.io")(server, {
   cors: {
-    origin: "*",
-  },
+    origin: "*", // Para desarrollo en Codespaces es mejor dejarlo abierto
+    methods: ["GET", "POST"],
+    credentials: true
+  }
 });
 
 io.on("connection", async (socket) => {

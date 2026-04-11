@@ -1,0 +1,13 @@
+# Ignorar dependencias de Node
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Ignorar archivos de variables de entorno (seguridad)
+.env
+client/.env
+server/.env
+
+# Ignorar carpetas de compilación
+client/build/
+client/dist/
