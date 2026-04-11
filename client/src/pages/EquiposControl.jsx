@@ -1,5 +1,5 @@
 import { getQ100 } from "../services/routes";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import socket from "../socket/socket";
 
 const EquiposControl = () => {
@@ -12,6 +12,7 @@ const EquiposControl = () => {
   const [team1, setTeam1] = useState("");
   const [team2, setTeam2] = useState("");
   const [selectTeam, setSelectTeam] = useState(true);
+  const [selectTeamButton, setSelectTeamButton] = useState(true);
   const [readyTeams, setReadyTeams] = useState(false);
 
   // ==================== ESTADO DEL JUEGO ====================
@@ -26,6 +27,8 @@ const EquiposControl = () => {
   const [q3, setQ3] = useState(false);
   const [q4, setQ4] = useState(false);
   const [q5, setQ5] = useState(false);
+
+  const estaProcesando = useRef(false);
 
   // ==================== FUNCIONES DE DATOS ====================
   const getData100 = async () => {
@@ -60,23 +63,18 @@ const EquiposControl = () => {
         });
       }, 1500);
     } else {
-      if (number === 0) {
-        setInitGame(false);
-      }
-
       if (suma === 0) {
         setSuma(puntos);
       } else {
         setSuma(suma + puntos);
       }
-      console.log(suma);
-
       setTimeout(() => {
         socket.emit("sendValor", {
           number: number,
           puntos: suma + puntos,
         });
-      }, 1500);
+        setSelectTeamButton(false);
+      }, 300);
     }
   };
 
@@ -136,17 +134,44 @@ const EquiposControl = () => {
     setQ3(false);
     setQ4(false);
     setQ5(false);
+    setSelectTeamButton(true);
     socket.emit("reset", {
       reset: true,
     });
   };
 
   // ==================== FUNCIONES DE EVENTOS ====================
-  const handleMouseDown = (event) => {
-    if (event.button === 0) {
-      console.log("izquierdo");
-    } else if (event.button === 1) {
-      console.log("derecho");
+  
+  const detectarBoton = (e) => {
+    // 1. Evitamos que el click derecho abra el menú
+    
+    if (e.button === 2) {
+      e.preventDefault();
+    }
+
+    // 2. Control de repetición (Debounce lógico)
+    if (estaProcesando.current) return;
+
+    // 3. Identificamos qué botón de tu ratón viejo se pulsó
+    // e.button === 0 (Izquierdo), e.button === 2 (Derecho)
+    if (e.button === 0 || e.button === 2) {
+      estaProcesando.current = true;
+      
+      console.log(`Enviando botón ${e.button} al servidor...`);
+      
+      // Enviamos la info por socket
+      socket.emit("teamBottonSelect", { 
+        team: e.button === 0 ? 1 : 2,
+        timestamp: Date.now() 
+      });
+
+      // 4. Liberamos el candado después de 200ms para evitar el "rebote" físico
+      setTimeout(() => {
+
+        estaProcesando.current = false;
+        setInitGame(false);
+
+      }, 200);
     }
   };
 
@@ -172,7 +197,7 @@ const EquiposControl = () => {
   // ==================== RENDER ====================
 
   return (
-    <div id="divEquiposControl" onMouseDown={handleMouseDown}>
+    <div id="divEquiposControl">
       
       {readyTeams ? ( //si readyTeam es false muestra los inputs para agregar los nombres de los equipos, si es true muestra los botones para seleccionar el equipo
         <div>
@@ -244,7 +269,6 @@ const EquiposControl = () => {
                   Modo Libre
                 </button>
               ) : null}
-              <button onMouseDown={handleMouseDown}> Select</button>
             </div>
             {initGame === false ? (
               <div>
@@ -369,9 +393,15 @@ const EquiposControl = () => {
               )}
             </div>
           ) : (
+            selectTeamButton ? 
             <button id="btnTitle" onClick={() => sendValors(0, 0)}>
               {" "}
               Mostrar Titulo{" "}
+            </button> : 
+            <button id="btnTitle" onMouseDown={detectarBoton} 
+              onContextMenu={(e) => e.preventDefault()}>
+              {" "}
+              Botonera{" "}
             </button>
           )}
         </div>

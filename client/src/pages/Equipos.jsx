@@ -54,6 +54,17 @@ const Equipos = () => {
       setSelector(selectTitle.title);
     });
 
+    socket.on("teamBottonSelect", (teamBottonSelect) => {
+      if (teamBottonSelect.team == 1) {
+        console.log(team1);
+        //para mi lo mejor es hacer aparecer un cartel que diga "Equipo 1 seleccionado" y lo mismo para el equipo 2, con un modal
+      } else {
+        console.log(team2);
+      }
+    });
+
+    
+
     socket.on("sendStrike", (sendStrike) => {
       setStrike(sendStrike.strike);
       setSeeStrike(true);
@@ -122,6 +133,8 @@ const Equipos = () => {
         handleSumaTeam2(sendpoints.suma);
       }
     });
+
+    return () => socket.off("teamBottonSelect");
 
   }, [Socket, handleSumaTeam1, handleSumaTeam2]);
 

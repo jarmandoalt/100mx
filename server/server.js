@@ -83,4 +83,9 @@ io.on("connection", async (socket) => {
     io.emit("resetDuo", resetDuo);
     console.log(resetDuo);
   });
+
+  socket.on("teamBottonSelect", (teamBottonSelect) => {
+    io.emit("teamBottonSelect", teamBottonSelect);
+    console.log(teamBottonSelect);
+  });
 });
