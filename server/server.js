@@ -17,7 +17,11 @@ const io = require("socket.io")(server, {
   }
 });
 
+let prizes = ["Tequila", "$100", "Pelota"];
+
 io.on("connection", async (socket) => {
+  // Enviar premios actuales al conectarse
+  socket.emit('update-prizes', prizes);
 
   socket.on("init", (init) => {
     console.log(init);
@@ -84,8 +88,55 @@ io.on("connection", async (socket) => {
     console.log(resetDuo);
   });
 
-  socket.on("teamBottonSelect", (teamBottonSelect) => {
-    io.emit("teamBottonSelect", teamBottonSelect);
-    console.log(teamBottonSelect);
+// Escuchar cuando el admin actualiza la lista
+  socket.on('set-prizes', (newPrizes) => {
+    if (Array.isArray(newPrizes) && newPrizes.length > 0) {
+      prizes = newPrizes;
+      console.log('Premios actualizados:', newPrizes);
+    }
+    io.emit('update-prizes', prizes);
   });
+
+  // Manejador para obtener los premios en cualquier momento
+  socket.on('get-prizes', () => {
+    socket.emit('update-prizes', prizes);
+  });
+
+  // En tu servidor, dentro de io.on('connection', ...)
+socket.on('spin-request', () => {
+    if (prizes.length === 0) {
+      console.log('No hay premios para girar');
+      io.emit('spin-error', 'No hay premios disponibles');
+      return;
+    }
+    // Calculamos el índice ganador en el servidor para que todos vean lo mismo
+    const winningIndex = Math.floor(Math.random() * prizes.length);
+    console.log("Girando... índice ganador:", winningIndex);
+    
+    // IMPORTANTE: io.emit envía a TODOS los clientes conectados
+    io.emit('start-spin', {
+        index: winningIndex,
+        prizesCount: prizes.length
+    });
+});
+
+  // Manejador para iniciar giro continuo
+  socket.on('start-continuous-spin', () => {
+    console.log('Iniciando giro continuo');
+    io.emit('start-continuous-spin');
+  });
+
+  // Manejador para detener giro
+  socket.on('stop-spin', () => {
+    console.log('Deteniendo giro');
+    io.emit('stop-spin');
+  });
+
+  // Manejador para resultado del giro manual
+  socket.on('manual-spin-result', (data) => {
+    console.log('Resultado del giro manual:', data);
+    // Solo retransmitir el resultado sin activar animación
+    io.emit('manual-spin-result', data);
+  });
+
 });

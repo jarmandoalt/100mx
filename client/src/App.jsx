@@ -6,6 +6,9 @@ import Equipos from "../src/pages/Equipos.jsx"
 import Duo from "../src/pages/Duo.jsx"
 import EquiposControl from "../src/pages/EquiposControl.jsx"
 import DuoControl from "../src/pages/DuoControl.jsx"
+import Ruleta from "../src/pages/Ruleta.jsx"
+import RuletaControl from "../src/pages/RuletaControl.jsx"
+
 
 function App() {
   return (
@@ -18,6 +21,8 @@ function App() {
               <Route path="home/duo" element={<Duo />} />
               <Route path="home/equiposControl" element={<EquiposControl />} />
               <Route path="home/duoControl" element={<DuoControl />} />
+              <Route path="home/ruletaControl" element={<RuletaControl />} />
+              <Route path="home/ruleta" element={<Ruleta />} />
             </Routes>
           </BrowserRouter>
       </Provider>

@@ -39,11 +39,21 @@ const Home = () => {
     }
 };
 
+  const navigateRuleta = async () => {
+    navigate("/home/ruleta")
+    window.open(`/home/ruletaControl`, 'toolbar=0,location=0,menubar=0');
+  };
+
   return (
     <div id="divHome">
       <div>
         <button onClick={navigateEquipos}>
           Equipo
+        </button>
+      </div>
+      <div>
+        <button onClick={navigateRuleta}>
+          Ruleta
         </button>
       </div>
       <div>
