@@ -7,7 +7,7 @@
   bottom: 0;
 
   color-scheme: light dark;
-  background-color: #524cac;
+  background-color: #2f2f35;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,14 +16,14 @@
   --color-quest: rgba(36, 189, 22, 0.226);
   --color-answer: rgba(116, 153, 253, 0.616);
   --color-points-answer: rgb(80, 125, 248);
-  --color-hover-btn: rgb(222, 227, 241);
-  --color-btn: #5953a8ff;
+  --color-hover-btn: #9dd691;
+  --color-btn: rgb(235, 240, 241);
   --color-btn-press: rgb(111, 148, 252);
-  --color-btn-press-letra: whitesmoke;
+  --color-btn-press-letra: rgb(66, 64, 64);
   --bg-color: #1a1a1a;
   --board-bg: #2d2d2d;
-  --number-off: #524cac;
-  --number-on: #a6cde7;
+  --number-off: #48465f;
+  --number-on: #f7f3fc;
   --light-off: #8c8c00;
   --light-on: #ffeb3b;
   --shadow-dark: rgba(0, 0, 0, 0.6);
@@ -62,7 +62,6 @@ button {
 .number-board {
   border-radius: 15px;
   display: flex;
-  justify-content: center;
   align-self: center;
 }
 
@@ -76,8 +75,8 @@ button {
 
 .digit {
   position: relative;
-  width: 80px;
-  height: 145px;
+  width: 120px;
+  height: 180px;
 }
 
 .segment {
@@ -85,7 +84,6 @@ button {
   background-color: var(--number-off);
   border-radius: 5px;
   transition: background-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .segment.on {
@@ -97,43 +95,43 @@ button {
 .a {
   top: 0;
   left: 15px;
-  width: 50px;
+  width: 80px;
   height: 10px;
 }
 .b {
   top: 12px;
-  left: 60px;
+  left: 90px;
   width: 10px;
-  height: 40px;
+  height: 68px;
 }
 .c {
-  top: 68px;
-  left: 60px;
+  top: 90px;
+  left: 90px;
   width: 10px;
-  height: 40px;
+  height: 68px;
 }
 .d {
-  bottom: 24px;
+  bottom: 10px;
   left: 15px;
-  width: 50px;
+  width: 80px;
   height: 10px;
 }
 .e {
-  top: 68px;
+  top: 90px;
   left: 10px;
   width: 10px;
-  height: 40px;
+  height: 68px;
 }
 .f {
   top: 12px;
   left: 10px;
   width: 10px;
-  height: 40px;
+  height: 68px;
 }
 .g {
-  top: 55px;
+  top: 80px;
   left: 15px;
-  width: 50px;
+  width: 80px;
   height: 10px;
 }
 
@@ -290,57 +288,52 @@ button {
 
 #divEquipos {
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  margin-top: 8vh;
-}
-
-#divEquipos > div {
-  margin: auto;
+  width: 99vw;
 }
 
 #divEquipos > div:first-child {
-  height: 15vh;
+  position: absolute;
   display: flex;
+  top: 7vh;
+  left: 0.5vw;
   flex-direction: row;
-  justify-content: center;
-  width: 80vw;
+  justify-content: space-around;
+  align-items: center;
+  width: 99vw;
 }
 
+#divEquipos > div:first-child > div {
+  width: 40vw;
+}
+
+#divEquipos > div:first-child > div:nth-child(2) {
+  width: 15vw;
+}
+
+
 #divEquipos > div:first-child > div > div {
-  width: 25vw;
   text-align: center;
-  margin-top: -3vh;
   height: 27vh;
   border-radius: 25px;
 }
 
 #divEquipos > div:first-child > div > div > h1 {
-  margin-top: 3vh;
-  color: #c1c5bf;
+  margin-top: 1vh;
+  font-size: 3vw;
+  color: rgb(250, 250, 250);
 }
 
-#divEquipos > div:first-child > div > div.select {
-  border-style: dotted;
-  border-color: rgb(253, 36, 181);
-  box-shadow: 0 0 10px rgb(253, 36, 181), 0 0 20px rgb(253, 36, 181);
+#divEquipos > div:first-child > div > div > h1.select {
+  color: goldenrod;
   margin-top: 0vh;
 }
 
-#divEquipos > div:first-child > div > div.select > h1 {
-  margin-top: 1vh;
+#divEquipos > div:first-child > div > div > h1:nth-child(2) {
+  font-size: 4.5vw;
+  margin-top: -5vh;
 }
 
-#divEquipos > div:first-child > div > div > h1:last-child {
-  font-size: 5vw;
-  margin-top: -2vh;
-}
-
-#divEquipos > div:first-child > div:nth-child(2) {
-  margin: auto;
-  width: 25vw;
-  height: 100%;
-}
 
 /*Strike*/
 
@@ -355,6 +348,8 @@ button {
 #divEquipos > div:nth-child(2) {
   height: 65vh;
   width: 90vw;
+position: absolute;
+top: 10vw;
   display: flex;
   margin-top: 13vh;
   flex-direction: column;
@@ -489,70 +484,112 @@ margin-right: 3vw;
 
 /*btn selector equipo */
 
-#divEquiposControl > div:first-child > button.uno {
-  width: 20vw;
-  height: 10vh;
+#divEquiposControl > div:first-child > h1 {
+  border: none;
+  margin-left: 2vw;
+  width: 45vw;
+  margin-right: 2vw;
+  border-radius: 5px;
+  text-align: center;
+  color: whitesmoke;
+  background-color: #38383f;
+}
+
+#divEquiposControl > div:first-child > h1.uno {
   font-size: 3vw;
   border: none;
   border-radius: 5px;
-  color: var(--color-btn-press-letra);
-  background-color: var(--color-btn);
+  color: whitesmoke
 }
 
-#divEquiposControl > div:first-child > button.uno:hover {
-  background-color: var(--color-hover-btn);
-  color: whitesmoke;
-}
-
-#divEquiposControl > div:first-child > button.dos {
-  width: 20vw;
-  height: 10vh;
-  font-size: 2vw;
-  margin-left: 2vw;
+#divEquiposControl > div:first-child > h1.dos {
+  font-size: 3vw;
   border: none;
   border-radius: 5px;
-  background-color: var(--color-btn);
-  color: var(--color-btn-press-letra);
-}
-
-#divEquiposControl > div:first-child > button.dos:hover {
-  background-color: var(--color-hover-btn);
   color: whitesmoke;
 }
 
 /*btns apretados selector de equipo*/
 
-#divEquiposControl > div:first-child > button.uno.btn {
-  font-size: 2vw;
-  height: 10vh;
-  border-style: dotted;
+#divEquiposControl > div:first-child > h1.uno.btn {
+  font-size: 3vw;
   text-align: center;
-  color: rgb(248, 77, 162);
-  margin-top: -1vh;
-  background-color: #5953a8ff;
+  color: rgb(161, 165, 98);
 }
 
-#divEquiposControl > div:first-child > button.uno.btn:hover {
-  background-color: #5953a8ff;
-}
 
-#divEquiposControl > div:first-child > button.dos.btn {
-  margin-left: 2vw;
-  font-size: 2vw;
-  height: 10vh;
-  border-style: dotted;
+#divEquiposControl > div:first-child > h1.dos.btn {
   text-align: center;
-  border-color: rgb(197, 86, 151);
-  margin-top: -1vh;
-  background-color: #5953a8ff;
-  color: whitesmoke;
+  font-size: 3vw;
+  text-align: center;
+  color: rgb(161, 165, 98);
 }
 
-#divEquiposControl > div:first-child > button.dos.btn {
-background-color: #5953a8ff;
+#divEquiposControl > div:first-child > div > button {
+  height: 5vw;
+  padding: 0 1vw 0 1vw;
+  font-size: 1.5vw;
+  background-color: var(--color-btn);
+  color: var(--color-btn-press-letra);
+  border: none;
+  border-radius: 5px;
+  background-color: #6597e7;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  /* Sombra sólida hacia abajo */
+  box-shadow: 0 6px 0 #2a5379; 
+  transition: all 0.1s;
+}
+
+#divEquiposControl > div:first-child > div > button:hover {
+color: #e9e7f3;
+  background-color: var(--color-hover-btn);
+}
+
+#divEquiposControl > div:first-child > div > button:active {
+background-color: var(--color-hover-btn);
+  box-shadow: 0 2px 0 #536b4f;
+  transform: translateY(4px);
 }
 
 /*div Pedir Datos, reset, select, strike*/
+
+h2.alerta-activada-pulso {
+  font-family: sans-serif;
+  color: #c0392b; /* Rojo base */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  /* Nombre de la animación, duración, forma y repetición infinita */
+  animation: pulsoAlerta 1.5s ease-in-out infinite;
+}
+
+@keyframes pulsoAlerta {
+  0% {
+    transform: scale(1.5);
+    /* Sombra inicial suave */
+    text-shadow: 0 0 5px rgba(192, 57, 43, 0.5);
+  }
+  
+  50% {
+    transform: scale(1.53); /* Ligeramente más grande */
+    /* Resplandor intenso al 50% */
+    text-shadow: 0 0 20px rgba(192, 57, 43, 1), 
+                 0 0 30px rgba(231, 76, 60, 0.8);
+    color: #e74c3c; /* Tono de rojo más brillante */
+  }
+  
+  100% {
+    transform: scale(1.5);
+    /* Vuelve a la sombra inicial */
+    text-shadow: 0 0 5px rgba(192, 57, 43, 0.5);
+  }
+}
+
 #divEquiposControl > div:nth-child(2) {
   display: flex;
   flex-direction: row;
@@ -571,7 +608,7 @@ background-color: #5953a8ff;
 }
 
 #divEquiposControl > div:nth-child(2) > div > div {
-  width: 30vw;
+  width: 80vw;
   display: flex;
   justify-content: space-around;
 }
@@ -579,13 +616,32 @@ background-color: #5953a8ff;
 /*button Reset/Select/Strike*/
 
 #divEquiposControl > div:nth-child(2) > div > div > button {
-  height: 5vw;
+  height: 3vw;
   padding: 0 1vw 0 1vw;
-  font-size: 2vw;
+  font-size: 1.5vw;
   background-color: var(--color-btn);
   color: var(--color-btn-press-letra);
   border: none;
   border-radius: 5px;
+  background-color: #6597e7;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  /* Sombra sólida hacia abajo */
+  box-shadow: 0 6px 0 #2a5379; 
+  transition: all 0.1s;
+}
+
+#divEquiposControl > div:nth-child(2) > div > div > button:active {
+box-shadow: 0 2px 0 #2a5379; 
+  transform: translateY(4px);
+}
+
+#divEquiposControl > div:nth-child(2) > div > div > label {
+color: whitesmoke;
 }
 
 #divEquiposControl > div:nth-child(2) > div > div > button:hover {
@@ -619,11 +675,23 @@ background-color: #5953a8ff;
 /*btn controlador numero de pregunta*/
 
 #divEquiposControl > div:nth-child(2) > div > div:last-child > button {
-  height: 5vw;
-  width: 5vw;
-  margin-left: 2vw;
+  height: 3vw;
+  padding: 0 1vw 0 1vw;
+  font-size: 1.5vw;
   background-color: var(--color-btn);
-  color: var(--color-btn-press);
+  color: var(--color-btn-press-letra);
+  border: none;
+  border-radius: 5px;
+  background-color: #6597e7;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  /* Sombra sólida hacia abajo */
+  box-shadow: 0 6px 0 #2a5379; 
+  transition: all 0.1s;
   margin-right: 2vw;
 }
 
@@ -654,7 +722,8 @@ background-color: #5953a8ff;
 #divEquiposControl > div:nth-child(3) > div > h1 {
   width: 80vw;
   text-align: center;
-  font-size: 3vw;
+  color: whitesmoke;
+  font-size: 2vw;
 }
 
 /*btn Mostrar titulo*/
@@ -677,13 +746,23 @@ background-color: #5953a8ff;
 /*btn selector de respuestas*/
 
 #divEquiposControl > div:nth-child(3) > div > button {
-  width: 18vw;
-  height: 10vh;
+ height: 4vw;
+  padding: 0 1vw 0 1vw;
+  font-size: 1.5vw;
   background-color: var(--color-btn);
   color: var(--color-btn-press-letra);
   border: none;
-  border-radius: 10px;
-  font-size: 1vw;
+  border-radius: 5px;
+  background-color: #6597e7;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  /* Sombra sólida hacia abajo */
+  box-shadow: 0 6px 0 #2a5379; 
+  transition: all 0.1s;
 }
 
 #divEquiposControl > div:nth-child(3) > div > button:hover {
@@ -693,17 +772,29 @@ background-color: #5953a8ff;
 
 #divEquiposControl > div:nth-child(3) > div > button.not {
   cursor: not-allowed;
-  color: whitesmoke;
   background-color: var(--color-hover-btn);
+  box-shadow: 0 2px 0 #536b4f;
+  transform: translateY(4px);
 }
 
 #divEquiposControl > div:nth-child(4) > button {
-  width: 30vw;
-  height: 15vh;
-  font-size: 2vw;
+   height: 6vw;
+  padding: 0 1vw 0 1vw;
+  font-size: 1.5vw;
   background-color: var(--color-btn);
-  border: none;
   color: var(--color-btn-press-letra);
+  border: none;
+  border-radius: 5px;
+  background-color: #6597e7;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  /* Sombra sólida hacia abajo */
+  box-shadow: 0 6px 0 #2a5379; 
+  transition: all 0.1s;
 }
 
 #divEquiposControl > div:nth-child(4) > button:hover {

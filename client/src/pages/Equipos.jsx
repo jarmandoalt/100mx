@@ -17,7 +17,7 @@ const Equipos = () => {
     [selector4, setSelector4] = useState(true),
     [strike, setStrike] = useState(0),
     [seeStrike, setSeeStrike] = useState(false),
-    [selectTeam, setSelectTeam] = useState(true),
+    [selectTeam, setSelectTeam] = useState(0),
     [team2, setTeam2] = useState(""),
     [team1, setTeam1] = useState(""),
     [sumaTeam2, setSumaTeam2] = useState(0),
@@ -34,7 +34,7 @@ const Equipos = () => {
     }
     setTimeout(() => {
       setInicio(1);
-    }, 1000);
+    }, 200);
   };
 
   const handleSumaTeam1 = (suma1) => {
@@ -57,13 +57,10 @@ const Equipos = () => {
     socket.on("teamBottonSelect", (teamBottonSelect) => {
       if (teamBottonSelect.team == 1) {
         console.log(team1);
-        //para mi lo mejor es hacer aparecer un cartel que diga "Equipo 1 seleccionado" y lo mismo para el equipo 2, con un modal
       } else {
         console.log(team2);
       }
     });
-
-    
 
     socket.on("sendStrike", (sendStrike) => {
       setStrike(sendStrike.strike);
@@ -108,6 +105,7 @@ const Equipos = () => {
       setSelector3(true);
       setSelector4(true);
       setSelector5(true);
+      setSelectTeam(0);
       setSuma(0);
       setStrike(0);
     });
@@ -181,26 +179,32 @@ const Equipos = () => {
     <div id="divEquipos">
       <div>
         <div>
-          {selectTeam ? (
-            <div className="select">
-              <h1>{team1}</h1>
-              <h1>{sumaTeam1}</h1>
+          {selectTeam === true ? (
+            <div>
+              <h1 className="select">{team1}</h1>
+              {
+              inicio === 1 ? <h1 className="select">{sumaTeam1}</h1> : null
+              }
             </div>
           ) : (
-            <div>
+            <div >
               <h1>{team1}</h1>
-              <h1>{sumaTeam1}</h1>
+              {
+              inicio === 1 ? <h1>{sumaTeam1}</h1> : null
+              }
+              
             </div>
           )}
         </div>
         {seeStrike === false ? (
+          inicio === 0 ? null :
           <div>
             {/* <h1>{suma}</h1> */}
-        <div className="number-board">
-          <DigitDisplay digitValue={numStr[0]} />
-          <DigitDisplay digitValue={numStr[1]} />
-          <DigitDisplay digitValue={numStr[2]} />
-        </div>
+            <div className="number-board">
+              <DigitDisplay digitValue={numStr[0]} />
+              <DigitDisplay digitValue={numStr[1]} />
+              <DigitDisplay digitValue={numStr[2]} />
+            </div>
 
           </div>
         ) : strike == 1 ? (
@@ -217,15 +221,19 @@ const Equipos = () => {
           </div>
         ) : null}
         <div>
-          {selectTeam ? (
+          {selectTeam === false ? (
             <div>
-              <h1>{team2}</h1>
-              <h1>{sumaTeam2}</h1>
+              <h1 className=" select">{team2}</h1>
+              {
+              inicio === 1 ? <h1 className="select">{sumaTeam2}</h1> : null
+               }
             </div>
           ) : (
-            <div className="select">
+            <div >
               <h1>{team2}</h1>
-              <h1>{sumaTeam2}</h1>
+              {
+              inicio === 1 ? <h1>{sumaTeam2}</h1> : null
+               }
             </div>
           )}
         </div>

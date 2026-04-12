@@ -7,11 +7,12 @@ const EquiposControl = () => {
   const [realData, setRealData] = useState([]);
   const [inicio, setInicio] = useState(0);
   const [suma, setSuma] = useState(0);
+  const [multi, setMulti] = useState(1);
 
   // ==================== ESTADO DE EQUIPOS ====================
   const [team1, setTeam1] = useState("");
   const [team2, setTeam2] = useState("");
-  const [selectTeam, setSelectTeam] = useState(true);
+  const [selectTeam, setSelectTeam] = useState(0);
   const [selectTeamButton, setSelectTeamButton] = useState(true);
   const [readyTeams, setReadyTeams] = useState(false);
 
@@ -54,7 +55,8 @@ const EquiposControl = () => {
   };
 
   // ==================== FUNCIONES DE PUNTOS ====================
-  const sendValors = (number, puntos) => {
+  const sendValors = (number, puntosBefore) => {
+    let puntos = puntosBefore * multi;
     if (modoLibre) {
       setTimeout(() => {
         socket.emit("sendValor", {
@@ -79,8 +81,19 @@ const EquiposControl = () => {
   };
 
   const sendStrike = () => {
-    if (strike === 3) {
-      setStrike(0);
+    if (strike === 2) {
+      setStrike(strike + 1);
+      if (selectTeam) {
+        setSelectTeam(false);
+        socket.emit("selectTeam", {
+          team: false,
+        });
+      } else {
+        setSelectTeam(true);
+        socket.emit("selectTeam", {
+          team: true,
+        });
+      }
     } else {
       setStrike(strike + 1);
     }
@@ -134,6 +147,7 @@ const EquiposControl = () => {
     setQ3(false);
     setQ4(false);
     setQ5(false);
+    setSelectTeam(0);
     setSelectTeamButton(true);
     socket.emit("reset", {
       reset: true,
@@ -167,7 +181,17 @@ const EquiposControl = () => {
 
       // 4. Liberamos el candado después de 200ms para evitar el "rebote" físico
       setTimeout(() => {
-
+        if (e.button === 0) {
+          setSelectTeam(true);
+      socket.emit("selectTeam", {
+        team: true,
+      });
+        } else {
+setSelectTeam(false);
+      socket.emit("selectTeam", {
+        team: false,
+      });
+        }
         estaProcesando.current = false;
         setInitGame(false);
 
@@ -199,23 +223,40 @@ const EquiposControl = () => {
   return (
     <div id="divEquiposControl">
       
-      {readyTeams ? ( //si readyTeam es false muestra los inputs para agregar los nombres de los equipos, si es true muestra los botones para seleccionar el equipo
+      {readyTeams ? ( 
         <div>
-          {selectTeam ? (
-            <button className="uno btn">{team1}</button>
-          ) : (
-            <button className="uno" onClick={handlerSelectTeam}>
+          {selectTeam === true ? (
+            <h1 className="uno btn">{team1}</h1>
+          ) : 
+            <h1 className="uno" style={{cursor: "not-allowed"}}>
               {team1}
-            </button>
-          )}
-          {selectTeam ? (
-            <button className="dos" onClick={handlerSelectTeam}>
+            </h1> 
+            }
+          <div>
+            {
+              suma === 0 && initGame === false ?
+              <button onClick={handlerSelectTeam}> Cambiar Team </button> :
+              null
+            }
+          </div>
+
+          {selectTeam === true ? (
+           <h1 className="dos" style={{cursor: "not-allowed"}}>
               {team2}
-            </button>
+            </h1>
           ) : (
-            <button className="dos btn">{team2}</button>
+            selectTeam === 0 ? <h1 className="dos" style={{cursor: "not-allowed"}}>
+              {team2}
+            </h1> :
+            <h1 className="dos btn" style={{cursor: "not-allowed"}}>
+              {team2}
+            </h1>
           )}
+
+          
+          
         </div>
+
       ) : (
         <div className="divInputsTeam">
           <div>
@@ -262,15 +303,49 @@ const EquiposControl = () => {
               <button style={{ cursor: "pointer" }} onClick={reset}>
                 Reset
               </button>
+              {
+                multi > 1 && modoLibre === false && initGame ? (
+                  <button onClick={() => setMulti(1)}>
+                    Activar X1
+                  </button>
+                ) :
+                multi === 1 && modoLibre === false && initGame ?
+                 <button onClick={() => setMulti(2)} className="active" style={{backgroundColor: "green"}}>
+                    Activado X1
+                  </button> : null
+              }
+              {
+                multi !== 2 && modoLibre === false && initGame ? (
+                  <button onClick={() => setMulti(2)}>
+                    Activar X2
+                  </button>
+                ) : 
+                multi === 2 && modoLibre === false && initGame ?
+                <button onClick={() => setMulti(2)} className="active" style={{backgroundColor: "green"}}>
+                    Activado X2
+                  </button> : null
+              }
+              {
+                multi !== 3 && modoLibre === false && initGame ? (
+                  <button onClick={() => setMulti(3)}>
+                    Activar X3
+                  </button>
+                ) : multi === 3 && modoLibre === false && initGame ?
+                <button onClick={() => setMulti(3)} className="active" style={{backgroundColor: "green"}}>
+                    Activado X3
+                  </button> : null
+              }
+
+
               {modoLibre ? (
-                <button
-                  style={{ backgroundColor: "green", cursor: "not-allowed" }}
+                <h2
+                  className="alerta-activada-pulso"
                 >
                   Modo Libre
-                </button>
+                </h2>
               ) : null}
             </div>
-            {initGame === false ? (
+            {initGame === false && modoLibre === false ? (
               <div>
                 <button onClick={sendStrike}>Strike {strike}</button>
               </div>
@@ -410,7 +485,7 @@ const EquiposControl = () => {
         {suma > 0 ? (
           modoLibre ? null : (
             <button onClick={sendPointsTeam}>
-              Mandar puntos a equipo {suma}
+              Mandar {suma} puntos
             </button>
           )
         ) : null}
