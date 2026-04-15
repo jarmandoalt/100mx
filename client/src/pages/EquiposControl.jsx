@@ -94,8 +94,13 @@ const EquiposControl = () => {
           team: true,
         });
       }
+      setTimeout(() => {
+        setStrike(0)
+      }, 5000);
+      
     } else {
-      setStrike(strike + 1);
+ setStrike(strike + 1);
+     
     }
   };
 
@@ -352,7 +357,7 @@ setSelectTeam(false);
             ) : null}
             {initGame ? (
               <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px" }}>
-                <label htmlFor="questionSelect" style={{ fontSize: "18px", fontWeight: "bold" }}>Selecciona pregunta:</label>
+                
                 <select
                   id="questionSelect"
                   value={selector}
@@ -360,10 +365,11 @@ setSelectTeam(false);
                   style={{
                     padding: "10px",
                     fontSize: "16px",
+                    color: "#ffffff",
                     borderRadius: "5px",
-                    border: "2px solid #333",
+                    border: "2px solid #6e6d6d",
                     cursor: "pointer",
-                    backgroundColor: "white",
+                    backgroundColor: "#3e3e46",
                     minWidth: "250px"
                   }}
                 >

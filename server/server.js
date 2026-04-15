@@ -6,7 +6,8 @@ const SocketIo = require("socket.io");
 
 const server = app.listen(5050, '0.0.0.0', () => {
   connectdb(dbConfig);
-  console.log(`server on port ${5050}`);
+  console.log(`server on port ${5050
+  }`);
 });
 
 const io = require("socket.io")(server, {

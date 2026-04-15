@@ -19,13 +19,13 @@ const DigitDisplay = ({ digitValue }) => {
 
   return (
     <div className="digit">
-      <div className={`segment a ${activeSegments.includes('a') ? 'on' : ''}`}></div>
-      <div className={`segment b ${activeSegments.includes('b') ? 'on' : ''}`}></div>
-      <div className={`segment c ${activeSegments.includes('c') ? 'on' : ''}`}></div>
-      <div className={`segment d ${activeSegments.includes('d') ? 'on' : ''}`}></div>
-      <div className={`segment e ${activeSegments.includes('e') ? 'on' : ''}`}></div>
-      <div className={`segment f ${activeSegments.includes('f') ? 'on' : ''}`}></div>
-      <div className={`segment g ${activeSegments.includes('g') ? 'on' : ''}`}></div>
+      <div className={`segments a ${activeSegments.includes('a') ? 'on' : ''}`}></div>
+      <div className={`segments b ${activeSegments.includes('b') ? 'on' : ''}`}></div>
+      <div className={`segments c ${activeSegments.includes('c') ? 'on' : ''}`}></div>
+      <div className={`segments d ${activeSegments.includes('d') ? 'on' : ''}`}></div>
+      <div className={`segments e ${activeSegments.includes('e') ? 'on' : ''}`}></div>
+      <div className={`segments f ${activeSegments.includes('f') ? 'on' : ''}`}></div>
+      <div className={`segments g ${activeSegments.includes('g') ? 'on' : ''}`}></div>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { getQ100 } from "../services/routes";
 import { useEffect, useState } from "react";
 import { Socket } from "socket.io-client";
 import DigitDisplay from "./DigitDisplay";
+import Modal from 'react-bootstrap/Modal';
 import max  from "../../public/maximize.svg";
 import min  from "../../public/minimize.svg";
 
@@ -196,7 +197,7 @@ const Equipos = () => {
             </div>
           )}
         </div>
-        {seeStrike === false ? (
+        { 
           inicio === 0 ? null :
           <div>
             {/* <h1>{suma}</h1> */}
@@ -206,20 +207,7 @@ const Equipos = () => {
               <DigitDisplay digitValue={numStr[2]} />
             </div>
 
-          </div>
-        ) : strike == 1 ? (
-          <div>
-            <h1>X</h1>
-          </div>
-        ) : strike == 2 ? (
-          <div>
-            <h1>X X</h1>
-          </div>
-        ) : strike == 3 ? (
-          <div>
-            <h1>X X X</h1>{" "}
-          </div>
-        ) : null}
+          </div>}
         <div>
           {selectTeam === false ? (
             <div>
@@ -239,7 +227,76 @@ const Equipos = () => {
         </div>
       </div>
       {inicio === 0 ? (
-        <div></div>
+        <div>
+          {selectorTitle ? (
+            <div>
+              <h1>------------ ------ --------------</h1>
+            </div>
+          ) : (
+            <div>
+              <h1>{realData[selector].title}</h1>
+            </div>
+          )}
+
+          <div>
+            {selector1 ? (
+              <div>
+                <h2>-------------</h2>
+                <h2>--</h2>
+              </div>
+            ) : (
+              <div>
+                <h2>{realData[selector].res1}</h2>
+                <h2>{realData[selector].valor1}</h2>
+              </div>
+            )}
+
+            {selector2 ? (
+              <div>
+                <h2>-------------</h2>
+                <h2>--</h2>
+              </div>
+            ) : (
+              <div>
+                <h2>{realData[selector].res2}</h2>
+                <h2>{realData[selector].valor2}</h2>
+              </div>
+            )}
+            {selector3 ? (
+              <div>
+                <h2>-------------</h2>
+                <h2>--</h2>
+              </div>
+            ) : (
+              <div>
+                <h2>{realData[selector].res3}</h2>
+                <h2>{realData[selector].valor3}</h2>
+              </div>
+            )}
+            {selector4 ? (
+              <div>
+                <h2>-------------</h2>
+                <h2>--</h2>
+              </div>
+            ) : (
+              <div>
+                <h2>{realData[selector].res4}</h2>
+                <h2>{realData[selector].valor4}</h2>
+              </div>
+            )}
+            {selector5 ? (
+              <div>
+                <h2>-------------</h2>
+                <h2>--</h2>
+              </div>
+            ) : (
+              <div>
+                <h2>{realData[selector].res5}</h2>
+                <h2>{realData[selector].valor5}</h2>
+              </div>
+            )}
+          </div>
+        </div>
       ) : (
         <div>
           {selectorTitle ? (
@@ -315,6 +372,32 @@ const Equipos = () => {
 <button id="btnScreen" onClick={handleToggleFullscreen}>
       {isFullscreen ? <img src={min}></img> : <img src={max}></img>}
     </button>
+    <Modal
+    id="modalStrike"
+        show={seeStrike}
+        onHide={() => setSeeStrike(false)}
+        dialogClassName="modal-90w"
+        aria-labelledby="example-custom-modal-styling-title"
+      >
+        
+        <Modal.Body>
+         {
+          strike == 1 ? (
+          <div id="divStrike">
+            <h1>X</h1>
+          </div>
+        ) : strike == 2 ? (
+          <div id="divStrike">
+            <h1>X X</h1>
+          </div>
+        ) : strike == 3 ? (
+          <div id="divStrike">
+            <h1>X X X</h1>{" "}
+          </div>
+        ) : null
+         }
+        </Modal.Body>
+      </Modal>
       
     </div>
   </>
