@@ -181,14 +181,14 @@ const Equipos = () => {
       <div>
         <div>
           {selectTeam === true ? (
-            <div>
+            <div className="select">
               <h1 className="select">{team1}</h1>
               {
               inicio === 1 ? <h1 className="select">{sumaTeam1}</h1> : null
               }
             </div>
           ) : (
-            <div >
+            <div>
               <h1>{team1}</h1>
               {
               inicio === 1 ? <h1>{sumaTeam1}</h1> : null
@@ -207,7 +207,7 @@ const Equipos = () => {
           </div>
         <div>
           {selectTeam === false ? (
-            <div>
+            <div  className=" select">
               <h1 className=" select">{team2}</h1>
               {
               inicio === 1 ? <h1 className="select">{sumaTeam2}</h1> : null

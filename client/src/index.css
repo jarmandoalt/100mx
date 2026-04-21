@@ -22,7 +22,7 @@
   --color-btn-press-letra: rgb(66, 64, 64);
   --bg-color: #1a1a1a;
   --board-bg: #1a1919;
-  --number-off: #48465f;
+  --number-off: #292953;
   --number-on: #f7f3fc;
   --light-off: #8c8c00;
   --light-on: #ffeb3b;
@@ -168,20 +168,12 @@ button {
   right: 0;
 }
 
-.light {
-  width: var(--light-size);
-  height: var(--light-size);
-  background-color: var(--light-off);
-  border-radius: 50%;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
-  animation: blink-light 1.5s infinite ease-in-out;
-}
 
 @keyframes blink-light {
   0%,
   100% {
     background-color: var(--light-off);
-    box-shadow: inset 0 0 2px rgba(2, 2, 2, 0.5);
+    box-shadow: inset 0 0 1px rgba(2, 2, 2, 0.5);
   }
   50% {
     background-color: var(--light-on);
@@ -303,7 +295,7 @@ button {
 #divEquipos > div:first-child {
   position: absolute;
   display: flex;
-  top: 7vh;
+  top: 2vh;
   left: 0.5vw;
   flex-direction: row;
   justify-content: space-around;
@@ -323,8 +315,33 @@ button {
 
 #divEquipos > div:first-child > div > div {
   text-align: center;
-  height: 27vh;
+  
   border-radius: 25px;
+}
+
+#divEquipos > div:first-child > div > div.select {
+  background-color: #333b68;
+  margin-top: -4vh;
+  height: 20vh;
+/* 1. EL BORDE INTERNO (Tubo de neón apagado o base) */
+    border: 4px solid #f9faf8;
+
+    /* 2. EL RESPLANDOR DEL TEXTO (Hará que las letras brillen) */
+    text-shadow:
+      0 0 2px #fff,
+      0 0 2px #fff,
+      0 0 2px #f7f6f1, /* Amarillo intenso */
+      0 0 2px #f0efe9,
+      0 0 2px #f1f1ea;
+
+    /* 3. EL RESPLANDOR DEL BORDE (El efecto de luces alrededor) */
+    box-shadow:
+      /* Resplandor externo */
+      0 0 10px #a4e451,
+      0 0 20px #9ae741,
+      0 0 50px #a7f32c,
+      /* Resplandor interno para dar volumen */
+      inset 0 0 5px #8ef739;
 }
 
 #divEquipos > div:first-child > div > div > h1 {
@@ -335,27 +352,20 @@ button {
   
 }
 
-#divEquipos > div:first-child > div > div > h1.select {
-  color: goldenrod;
-  margin-top: 0vh;
-}
-
 #divEquipos > div:first-child > div > div > h1:nth-child(2) {
   font-size: 4.5vw;
   margin-top: -5vh;
 }
 
-
 /*Strike*/
-
-
 
 #divEquipos > div:nth-child(2) {
   height: 65vh;
   width: 90vw;
   position: absolute;
-  top: 20vw;
+  top: 15vw;
   display: flex;
+  align-items: center;
   flex-direction: column;
   margin-left: 5vw;
 }
@@ -366,7 +376,7 @@ button {
 #divEquipos > div:nth-child(2)> div:first-child > h1 {
   height: auto;
   background-color: var(--color-quest);
-  font-size: 2.5vw;
+  font-size: 2.3vw;
   color: #fafaf4;
   border-radius: 18px;
   text-align: center;
@@ -384,10 +394,10 @@ button {
     /* 2. EL RESPLANDOR DEL TEXTO (Hará que las letras brillen) */
     text-shadow:
       0 0 2px #fff,
-      0 0 4px #fff,
-      0 0 6px #ffea00, /* Amarillo intenso */
-      0 0 8px #ffea00,
-      0 0 10px #ffea00;
+      0 0 2px #fff,
+      0 0 2px #fcfbf8, /* Amarillo intenso */
+      0 0 3px #f3f3ef,
+      0 0 2px #f3f2ea;
 
     /* 3. EL RESPLANDOR DEL BORDE (El efecto de luces alrededor) */
     box-shadow:
@@ -428,33 +438,108 @@ button {
   }
 
   #divEquipos > div:nth-child(2) > div:last-child {
-    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+  background-color: var(--color-quest);
+  color: #fafaf4;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Archivo Black', sans-serif;
+    border-radius: 15px; /* Bordes suaves */
+    position: relative;
+    background-color: rgba(255, 255, 0, 0.05); /* Un tinte amarillo muy suave de fondo */
+
+    /* 1. EL BORDE INTERNO (Tubo de neón apagado o base) */
+    border: 4px solid #f1f0ec;
+
+    /* 2. EL RESPLANDOR DEL TEXTO (Hará que las letras brillen) */
+    text-shadow:
+      0 0 2px #fff,
+      0 0 4px #fff,
+      0 0 6px #f7f6f1, /* Amarillo intenso */
+      0 0 8px #f0efe9,
+      0 0 10px #f1f1ea;
+
+    /* 3. EL RESPLANDOR DEL BORDE (El efecto de luces alrededor) */
+    box-shadow:
+      /* Resplandor externo */
+      0 0 10px #fff,
+      0 0 20px #eee587,
+      0 0 50px #f1e990,
+      /* Resplandor interno para dar volumen */
+      inset 0 0 15px #eee9b0;
+
   }
 
 #divEquipos > div:nth-child(2) > div:last-child > div {
   display: flex;
   flex-direction: row;
-  margin-top: -7vh;
-  margin-left: 7.5vw;
+  padding: 0 20px;
+  margin-top: -7.5vh;
+}
+
+#divEquipos > div:nth-child(2) > div:last-child > div:first-child {
+  margin-top: 0vh;
 }
 
 /*Respuestas Q100*/
 
 #divEquipos > div:nth-child(2)> div:last-child > div > h2:first-child {
-  background-color: var(--color-answer);
+  background-color:#9481aa34;
+  width: 15vw;
   width: 59vw;
   border-radius: 18px 0 0 18px;
   font-size: 2.7vw;
   text-align: center;
+   /* 1. EL BORDE INTERNO (Tubo de neón apagado o base) */
+    border: 2px solid #2d6cbe;
+
+    /* 2. EL RESPLANDOR DEL TEXTO (Hará que las letras brillen) */
+    text-shadow:
+      0 0 2px #fff,
+      0 0 2px #fff,
+      0 0 2px #f7f6f1, /* Amarillo intenso */
+      0 0 2px #f0efe9,
+      0 0 2px #f1f1ea;
+
+    /* 3. EL RESPLANDOR DEL BORDE (El efecto de luces alrededor) */
+    box-shadow:
+      /* Resplandor externo */
+      0 0 5px #6391f3,
+      0 0 5px #51b2f3,
+      0 0 5px #6497e4be,
+      /* Resplandor interno para dar volumen */
+      inset 0 0 5px #4b6fb3;
 }
 
 #divEquipos > div:nth-child(2)> div:last-child > div > h2:last-child {
-  background-color: var(--color-points-answer);
+  background-color: #9481aa34;
   width: 15vw;
   font-size: 2.7vw;
   border-radius: 0 18px 18px 0;
   margin-left: 0.5vw;
   text-align: center;
+  /* 1. EL BORDE INTERNO (Tubo de neón apagado o base) */
+    border: 2px solid #b375ec;
+
+    /* 2. EL RESPLANDOR DEL TEXTO (Hará que las letras brillen) */
+    text-shadow:
+      0 0 2px #fff,
+      0 0 2px #fff,
+      0 0 2px #f7f6f1, /* Amarillo intenso */
+      0 0 2px #f0efe9,
+      0 0 2px #f1f1ea;
+
+    /* 3. EL RESPLANDOR DEL BORDE (El efecto de luces alrededor) */
+    box-shadow:
+      /* Resplandor externo */
+      0 0 5px #a26beb,
+      0 0 5px #8752cc,
+      0 0 5px #9b50f0,
+      /* Resplandor interno para dar volumen */
+      inset 0 0 5px #8b3ed3;
 }
 
 /*Control 100 */
@@ -1059,7 +1144,6 @@ color: whitesmoke;
 }
 
 
-
 #controlDuo > div:last-child > div > div > div > button.select2 {
   background-color: var(--color-hover-btn);
   color: rgb(213, 80, 230);;    
@@ -1173,12 +1257,16 @@ color: whitesmoke;
   position: absolute;
   font-size: 24vw;
   color: rgb(216, 81, 76);
+  text-shadow:
+      0 0 2px #af2020,
+      0 0 4px #f34141,
+      0 0 6px #f85353, /* Amarillo intenso */
+      0 0 8px #b42020,
+      0 0 10px #dd1d1d;
   text-align: center;
   width: 90vw;
   height: 65vh !important;
-  background-color: rgba(255, 0, 0, 0.11);
   padding-top: 0 !important;
   margin-top: 0 !important;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
 }

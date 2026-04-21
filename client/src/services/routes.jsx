@@ -3,7 +3,7 @@ import Axios from "axios";
 
 //const baseUrl = "https://server-who-is-this-pokmeon.onrender.com/v1";
 //const baseUrl = "http://localhost:5050/v1";
-const baseUrl = "https://verbose-lamp-74rxrpx9vvqcg9r-5050.app.github.dev/v1";
+const baseUrl = "https://ominous-waffle-5p494x9qv6whx46-5050.app.github.dev/v1";
 
 export async function getQ100() {
   try {

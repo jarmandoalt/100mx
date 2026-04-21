@@ -15,6 +15,8 @@ const EquiposControl = () => {
   const [selectTeam, setSelectTeam] = useState(0);
   const [selectTeamButton, setSelectTeamButton] = useState(true);
   const [readyTeams, setReadyTeams] = useState(false);
+  const [messageTeam1, setMessageTeam1] = useState("");
+  const [messageTeam2, setMessageTeam2] = useState("");
 
   // ==================== ESTADO DEL JUEGO ====================
   const [selector, setSelector] = useState(0);
@@ -114,13 +116,19 @@ const EquiposControl = () => {
 
   // ==================== FUNCIONES DE EQUIPOS ====================
   const handlerNameTeam1 = (e) => {
-    e.preventDefault();
-    setTeam1(e.target.value);
+    const value = e.target.value;
+    if (value.length <= 20) {
+      setTeam1(value);
+      setMessageTeam1(value.length === 20 ? "Límite de 20 caracteres alcanzado" : "");
+    }
   };
 
   const handlerNameTeam2 = (e) => {
-    e.preventDefault();
-    setTeam2(e.target.value);
+    const value = e.target.value;
+    if (value.length <= 20) {
+      setTeam2(value);
+      setMessageTeam2(value.length === 20 ? "Límite de 20 caracteres alcanzado" : "");
+    }
   };
 
   const handlerSelectTeam = () => {
@@ -264,21 +272,25 @@ setSelectTeam(false);
           </div>
           <div>
            <div>
+            {messageTeam1 && <p style={{color: 'red', fontSize: '12px'}}>{messageTeam1}</p>}
             <input
               type="text"
               name="team2"
               placeholder="team1"
               autoComplete="off"
               onChange={handlerNameTeam1}
+              maxLength="20"
             />
            </div>
            <div>
+            {messageTeam2 && <p style={{color: 'red', fontSize: '12px'}}>{messageTeam2}</p>}
             <input
               type="text"
               name="team1"
               placeholder="team2"
               autoComplete="off"
               onChange={handlerNameTeam2}
+              maxLength="20"
             />
            </div>
            <div>
