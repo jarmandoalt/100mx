@@ -259,6 +259,7 @@ button {
   height: 70vh;
   flex-direction: column;
   justify-content: center;
+  
 }
 
 #divHome > div {
@@ -290,6 +291,13 @@ button {
   display: flex;
   flex-direction: column;
   width: 99vw;
+  background: radial-gradient(circle, rgba(32,45,92,1) 0%, rgba(10,16,31,1) 100%);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Asegura que esté detrás de todo */
 }
 
 #divEquipos > div:first-child {
@@ -324,6 +332,7 @@ button {
   font-size: 3vw;
   max-width: 35vw;
   color: rgb(250, 250, 250);
+  
 }
 
 #divEquipos > div:first-child > div > div > h1.select {
@@ -357,11 +366,70 @@ button {
 #divEquipos > div:nth-child(2)> div:first-child > h1 {
   height: auto;
   background-color: var(--color-quest);
-  font-size: 3vw;
+  font-size: 2.5vw;
   color: #fafaf4;
   border-radius: 18px;
   text-align: center;
+  font-family: 'Archivo Black', sans-serif;
+    text-transform: uppercase;
+    color: #fff; /* Texto blanco para el centro de la luz */
+    padding: 20px 40px;
+    border-radius: 15px; /* Bordes suaves */
+    position: relative;
+    background-color: rgba(255, 255, 0, 0.05); /* Un tinte amarillo muy suave de fondo */
+
+    /* 1. EL BORDE INTERNO (Tubo de neón apagado o base) */
+    border: 4px solid #fff;
+
+    /* 2. EL RESPLANDOR DEL TEXTO (Hará que las letras brillen) */
+    text-shadow:
+      0 0 2px #fff,
+      0 0 4px #fff,
+      0 0 6px #ffea00, /* Amarillo intenso */
+      0 0 8px #ffea00,
+      0 0 10px #ffea00;
+
+    /* 3. EL RESPLANDOR DEL BORDE (El efecto de luces alrededor) */
+    box-shadow:
+      /* Resplandor externo */
+      0 0 10px #fff,
+      0 0 20px #ffea00,
+      0 0 50px #ffea00,
+      /* Resplandor interno para dar volumen */
+      inset 0 0 15px #ffea00;
+
+    /* 4. ANIMACIÓN (Opcional: hace que las luces parpadeen ligeramente) */
+    animation: parpadeo 1.5s infinite alternate;
 }
+
+@keyframes parpadeo {
+    0%, 100% {
+      opacity: 1;
+      box-shadow:
+        0 0 10px #fff,
+        0 0 20px #ffea00,
+        0 0 50px #ffea00,
+        inset 0 0 15px #ffea00;
+    }
+    92% {
+      opacity: 1;
+    }
+    93% {
+      opacity: 0.9; /* Pequeño bajón de luz */
+      box-shadow:
+        0 0 5px #fff,
+        0 0 10px #ffea00,
+        0 0 30px #ffea00,
+        inset 0 0 10px #ffea00;
+    }
+    94% {
+      opacity: 1;
+    }
+  }
+
+  #divEquipos > div:nth-child(2) > div:last-child {
+    margin-top: 3vh;
+  }
 
 #divEquipos > div:nth-child(2) > div:last-child > div {
   display: flex;

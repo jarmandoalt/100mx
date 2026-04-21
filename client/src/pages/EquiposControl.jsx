@@ -238,13 +238,8 @@ setSelectTeam(false);
             </h1> 
             }
           <div>
-            {
-              suma === 0 && initGame === false ?
-              <button onClick={handlerSelectTeam}> Cambiar Team </button> :
-              null
-            }
+              <button onClick={handlerSelectTeam}> Cambiar Team </button>
           </div>
-
           {selectTeam === true ? (
            <h1 className="dos" style={{cursor: "not-allowed"}}>
               {team2}

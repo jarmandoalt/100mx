@@ -197,17 +197,14 @@ const Equipos = () => {
             </div>
           )}
         </div>
-        { 
-          inicio === 0 ? null :
           <div>
-            {/* <h1>{suma}</h1> */}
             <div className="number-board">
               <DigitDisplay digitValue={numStr[0]} />
               <DigitDisplay digitValue={numStr[1]} />
               <DigitDisplay digitValue={numStr[2]} />
             </div>
 
-          </div>}
+          </div>
         <div>
           {selectTeam === false ? (
             <div>
