@@ -52,17 +52,17 @@ const Duo = () => {
     [realData, setRealData] = useState([]),
     [inicio, setInicio] = useState(false);
 
-    const getData5 = async () => {
-        const response = await getQ5();
-        if (response.status === 200) {
-          setRealData(response.data.qt5);
-        }
-        setTimeout(() => {
-          setInicio(true);
-        }, 1000);
-    };
+  const getData5 = async () => {
+    const response = await getQ5();
+    if (response.status === 200) {
+      setRealData(response.data.qt5);
+    }
+    setTimeout(() => {
+      setInicio(true);
+    }, 1000);
+  };
 
-     useEffect(() => {
+  useEffect(() => {
     socket.on("init", () => {
       getData5();
     });
@@ -74,78 +74,155 @@ const Duo = () => {
 
   useEffect(() => {
     socket.on("sendRes", (sendRes) => {
-      switch (sendRes.quest) {
-        case 1:
-          setRes1(sendRes.res)
-          setTimeout(() => {
-            setSelector1(false)
-          }, 100);
-          break;
+      if (sendRes.fase == 2) {
+        switch (sendRes.quest) {
+          case 1:
+            setRes6(sendRes.res)
+            setTimeout(() => {
+              setSelector6(false)
+            }, 100);
+            break;
           case 2:
-          setRes2(sendRes.res)
-          setTimeout(() => {
-            setSelector2(false)
-          }, 100);
-          break;
+            setRes7(sendRes.res)
+            setTimeout(() => {
+              setSelector7(false)
+            }, 100);
+            break;
           case 3:
-          setRes3(sendRes.res)
-          setTimeout(() => {
-            setSelector3(false)
-          }, 100);
-          break;
+            setRes8(sendRes.res)
+            setTimeout(() => {
+              setSelector8(false)
+            }, 100);
+            break;
           case 4:
-          setRes4(sendRes.res)
-          setTimeout(() => {
-            setSelector4(false)
-          }, 100);
-          break;
+            setRes9(sendRes.res)
+            setTimeout(() => {
+              setSelector9(false)
+            }, 100);
+            break;
           case 5:
-          setRes5(sendRes.res)
-          setTimeout(() => {
-            setSelector5(false)
-          }, 100);
-          break;
-        default:
-          break;
+            setRes10(sendRes.res)
+            setTimeout(() => {
+              setSelector10(false)
+            }, 100);
+            break;
+          default:
+            break;
+        }
       }
+      if (sendRes.fase == 1) {
+        switch (sendRes.quest) {
+          case 1:
+            setRes1(sendRes.res)
+            setTimeout(() => {
+              setSelector1(false)
+            }, 100);
+            break;
+          case 2:
+            setRes2(sendRes.res)
+            setTimeout(() => {
+              setSelector2(false)
+            }, 100);
+            break;
+          case 3:
+            setRes3(sendRes.res)
+            setTimeout(() => {
+              setSelector3(false)
+            }, 100);
+            break;
+          case 4:
+            setRes4(sendRes.res)
+            setTimeout(() => {
+              setSelector4(false)
+            }, 100);
+            break;
+          case 5:
+            setRes5(sendRes.res)
+            setTimeout(() => {
+              setSelector5(false)
+            }, 100);
+            break;
+          default:
+            break;
+        }
+      }
+      
     });
 
     socket.on("sendVal", (sendVal) => {
       setSuma(sendVal.sum)
-      switch (sendVal.quest) {
-        case 1:
-          setVal1(sendVal.val)
-          setTimeout(() => {
-            setSelectorNum1(false)
-          }, 100); 
-          break;
+      if (sendVal.fase == 2) {
+        switch (sendVal.quest) {
+          case 1:
+            setVal6(sendVal.val)
+            setTimeout(() => {
+              setSelectorNum6(false)
+            }, 100);
+            break;
           case 2:
-          setVal2(sendVal.val)
-          setTimeout(() => {
-            setSelectorNum2(false)
-          }, 100);
-          break;
+            setVal7(sendVal.val)
+            setTimeout(() => {
+              setSelectorNum7(false)
+            }, 100);
+            break;
           case 3:
-          setVal3(sendVal.val)
-          setTimeout(() => {
-            setSelectorNum3(false)
-          }, 100);
-          break;
+            setVal8(sendVal.val)
+            setTimeout(() => {
+              setSelectorNum8(false)
+            }, 100);
+            break;
           case 4:
-          setVal4(sendVal.val)
-          setTimeout(() => {
-            setSelectorNum4(false)
-          }, 100);
-          break;
+            setVal9(sendVal.val)
+            setTimeout(() => {
+              setSelectorNum9(false)
+            }, 100);
+            break;
           case 5:
-          setVal5(sendVal.val)
-          setTimeout(() => {
-            setSelectorNum5(false)
-          }, 100);
-          break;
-        default:
-          break;
+            setVal10(sendVal.val)
+            setTimeout(() => {
+              setSelectorNum10(false)
+            }, 100);
+            break;
+          default:
+            break;
+        }
+      } else {
+        switch (sendVal.quest) {
+          case 1:
+            setVal1(sendVal.val)
+            setTimeout(() => {
+              setSelectorNum1(false)
+            }, 100);
+            break;
+          case 2:
+            setVal2(sendVal.val)
+            setTimeout(() => {
+              setSelectorNum2(false)
+            }, 100);
+            break;
+          case 3:
+            setVal3(sendVal.val)
+            setTimeout(() => {
+              setSelectorNum3(false)
+            }, 100);
+            break;
+          case 4:
+            setVal4(sendVal.val)
+            setTimeout(() => {
+              setSelectorNum4(false)
+            }, 100);
+            break;
+          case 5:
+            setVal5(sendVal.val)
+            setTimeout(() => {
+              setSelectorNum5(false)
+            }, 100);
+            break;
+          default:
+            break;
+        }
       }
+
     });
 
     socket.on("resetDuo", () => {
@@ -204,46 +281,46 @@ const Duo = () => {
         <div id="res">
           <div>
             <div>
-              {selector1 ? <div><h1>-----------------</h1></div> : <div><h1> {res1} </h1></div> }
-              {selectorNum1 ? <div><h1>--</h1></div> : <div><h1>{val1}{selectorNum1}</h1></div> }
+              {selector1 ? <div><h1>-----------------</h1></div> : <div><h1> {res1} </h1></div>}
+              {selectorNum1 ? <div><h1>--</h1></div> : <div><h1>{val1}{selectorNum1}</h1></div>}
             </div>
             <div>
-              {selector2 ? <div><h1>-----------------</h1></div> : <div><h1>{res2}</h1></div> }
-              {selectorNum2 ? <div><h1>--</h1></div> : <div><h1>{val2}</h1></div> }
+              {selector2 ? <div><h1>-----------------</h1></div> : <div><h1>{res2}</h1></div>}
+              {selectorNum2 ? <div><h1>--</h1></div> : <div><h1>{val2}</h1></div>}
             </div>
             <div>
-              {selector3 ? <div><h1>-----------------</h1></div> : <div><h1>{res3} </h1></div> }
-              {selectorNum3 ? <div><h1>--</h1></div> : <div><h1>{val3}</h1></div> }
+              {selector3 ? <div><h1>-----------------</h1></div> : <div><h1>{res3} </h1></div>}
+              {selectorNum3 ? <div><h1>--</h1></div> : <div><h1>{val3}</h1></div>}
             </div>
             <div>
-              {selector4 ? <div><h1>-----------------</h1></div> : <div><h1>{res4} </h1></div> }
-              {selectorNum4 ? <div><h1>--</h1></div> : <div><h1>{val4}</h1></div> }
+              {selector4 ? <div><h1>-----------------</h1></div> : <div><h1>{res4} </h1></div>}
+              {selectorNum4 ? <div><h1>--</h1></div> : <div><h1>{val4}</h1></div>}
             </div>
             <div>
-              {selector5 ? <div><h1>-----------------</h1></div> : <div><h1>{res5} </h1></div> }
-              {selectorNum5 ? <div><h1>--</h1></div> : <div><h1>{val5}</h1></div> }
+              {selector5 ? <div><h1>-----------------</h1></div> : <div><h1>{res5} </h1></div>}
+              {selectorNum5 ? <div><h1>--</h1></div> : <div><h1>{val5}</h1></div>}
             </div>
           </div>
           <div>
             <div>
-              {selector6 ? <div><h1>-----------------</h1></div> : <div><h1>{res6} </h1></div> }
-              {selectorNum6 ? <div><h1>--</h1></div> : <div><h1>{val6}</h1></div> }
+              {selector6 ? <div><h1>-----------------</h1></div> : <div><h1>{res6} </h1></div>}
+              {selectorNum6 ? <div><h1>--</h1></div> : <div><h1>{val6}</h1></div>}
             </div>
             <div>
-              {selector7 ? <div><h1>-----------------</h1></div> : <div><h1> {res7}</h1></div> }
-              {selectorNum7 ? <div><h1>--</h1></div> : <div><h1>{val7}</h1></div> }
+              {selector7 ? <div><h1>-----------------</h1></div> : <div><h1> {res7}</h1></div>}
+              {selectorNum7 ? <div><h1>--</h1></div> : <div><h1>{val7}</h1></div>}
             </div>
             <div>
-              {selector8 ? <div><h1>-----------------</h1></div> : <div><h1>{res8} </h1></div> }
-              {selectorNum8 ? <div><h1>--</h1></div> : <div><h1>{val8}</h1></div> }
+              {selector8 ? <div><h1>-----------------</h1></div> : <div><h1>{res8} </h1></div>}
+              {selectorNum8 ? <div><h1>--</h1></div> : <div><h1>{val8}</h1></div>}
             </div>
             <div>
-              {selector9 ? <div><h1>-----------------</h1></div> : <div><h1>{res9} </h1></div> }
-              {selectorNum9 ? <div><h1>--</h1></div> : <div><h1>{val9}</h1></div> }
+              {selector9 ? <div><h1>-----------------</h1></div> : <div><h1>{res9} </h1></div>}
+              {selectorNum9 ? <div><h1>--</h1></div> : <div><h1>{val9}</h1></div>}
             </div>
             <div>
-              {selector10 ? <div><h1>-----------------</h1></div> : <div><h1>{res10} </h1></div> }
-              {selectorNum10 ? <div><h1>--</h1></div> : <div><h1>{val10}</h1></div> }
+              {selector10 ? <div><h1>-----------------</h1></div> : <div><h1>{res10} </h1></div>}
+              {selectorNum10 ? <div><h1>--</h1></div> : <div><h1>{val10}</h1></div>}
             </div>
           </div>
         </div>

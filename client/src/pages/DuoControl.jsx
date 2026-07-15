@@ -45,131 +45,252 @@ const DuoControl = () => {
   };
 
   const handlerRes = (aux) => {
-    switch (aux) {
-      case 1:
-        socket.emit("sendRes", {
-          quest: 1,
-          res: selector1,
-        });
-        setControlSend(1);
-        break;
-      case 2:
-        socket.emit("sendRes", {
-          quest: 2,
-          res: selector2,
-        });
-        setControlSend(3);
+    if (fase2) {
+      switch (aux) {
+        case 1:
+          socket.emit("sendRes", {
+            quest: 1,
+            res: selector6,
+            fase: 2
+          });
+          setControlAllRes(false)
+          setControlSend(11);
+          break;
+        case 2:
+          socket.emit("sendRes", {
+            quest: 2,
+            res: selector7,
+            fase: 2
+          });
+          setControlSend(13);
 
-        break;
-      case 3:
-        socket.emit("sendRes", {
-          quest: 3,
-          res: selector3,
-        });
-        setControlSend(5);
+          break;
+        case 3:
+          socket.emit("sendRes", {
+            quest: 3,
+            res: selector8,
+            fase: 2
+          });
+          setControlSend(15);
 
-        break;
-      case 4:
-        socket.emit("sendRes", {
-          quest: 4,
-          res: selector4,
-        });
-        setControlSend(7);
+          break;
+        case 4:
+          socket.emit("sendRes", {
+            quest: 4,
+            res: selector9,
+            fase: 2
+          });
+          setControlSend(17);
 
-        break;
-      case 5:
-        socket.emit("sendRes", {
-          quest: 5,
-          res: selector5,
-        });
-        setControlSend(9);
-        break;
-      default:
-        break;
+          break;
+        case 5:
+          socket.emit("sendRes", {
+            quest: 5,
+            res: selector10,
+            fase: 2
+          });
+          setControlSend(19);
+          break;
+        default:
+          break;
+      }
+    } else {
+      switch (aux) {
+        case 1:
+          socket.emit("sendRes", {
+            quest: 1,
+            res: selector1,
+            fase: 1
+          });
+          setControlAllRes(false)
+          setControlSend(1);
+          break;
+        case 2:
+          socket.emit("sendRes", {
+            quest: 2,
+            res: selector2,
+            fase: 1
+          });
+          setControlSend(3);
+
+          break;
+        case 3:
+          socket.emit("sendRes", {
+            quest: 3,
+            res: selector3,
+            fase: 1
+          });
+          setControlSend(5);
+
+          break;
+        case 4:
+          socket.emit("sendRes", {
+            quest: 4,
+            res: selector4,
+            fase: 1
+          });
+          setControlSend(7);
+
+          break;
+        case 5:
+          socket.emit("sendRes", {
+            quest: 5,
+            res: selector5,
+            fase: 1
+          });
+          setControlSend(9);
+          break;
+        default:
+          break;
+      }
     }
+
   };
 
   const handlerPoints = (aux) => {
-    switch (aux) {
-      case 1:
-        setSuma(valor1);
+    if (fase2) {
+      switch (aux) {
+        case 1:
+          setSuma(suma + valor6);
 
-        socket.emit("sendVal", {
-          quest: 1,
-          sum: valor1,
-          val: valor1,
-        });
+          socket.emit("sendVal", {
+            quest: 1,
+            sum: suma + valor6,
+            val: valor6,
+            fase: 2
+          });
 
-        setControlSend(2);
+          setControlSend(12);
 
-        break;
-      case 2:
-        setSuma(suma + valor2);
+          break;
+        case 2:
+          setSuma(suma + valor7);
 
-        socket.emit("sendVal", {
-          quest: 2,
-          sum: suma + valor2,
-          val: valor2,
-        });
+          socket.emit("sendVal", {
+            quest: 2,
+            sum: suma + valor7,
+            val: valor7,
+            fase: 2
+          });
 
-        setControlSend(4);
+          setControlSend(14);
 
-        break;
-      case 3:
-        setSuma(suma + valor3);
+          break;
+        case 3:
+          setSuma(suma + valor8);
 
-        socket.emit("sendVal", {
-          quest: 3,
-          sum: suma + valor3,
-          val: valor3,
-        });
+          socket.emit("sendVal", {
+            quest: 3,
+            sum: suma + valor8,
+            val: valor8,
+            fase: 2
+          });
 
-        setControlSend(6);
+          setControlSend(16);
 
-        break;
-      case 4:
-        setSuma(suma + valor4);
+          break;
+        case 4:
+          setSuma(suma + valor9);
 
-        socket.emit("sendVal", {
-          quest: 4,
-          sum: suma + valor4,
-          val: valor4,
-        });
+          socket.emit("sendVal", {
+            quest: 4,
+            sum: suma + valor9,
+            val: valor9,
+            fase: 2
+          });
 
-        setControlSend(8);
+          setControlSend(18);
 
-        break;
-      case 5:
-        setSuma(suma + valor5);
-        socket.emit("sendVal", {
-          quest: 5,
-          sum: suma + valor5,
-          val: valor5,
-        });
+          break;
+        case 5:
+          setSuma(suma + valor10);
+          socket.emit("sendVal", {
+            quest: 5,
+            sum: suma + valor10,
+            val: valor10,
+            fase: 2
+          });
 
-        setControlSend(10);
+          setControlSend(20);
 
-        break;
-      default:
-        break;
+          break;
+        default:
+          break;
+      }
+    } else {
+      switch (aux) {
+        case 1:
+          setSuma(valor1);
+
+          socket.emit("sendVal", {
+            quest: 1,
+            sum: valor1,
+            val: valor1,
+            fase: 1
+          });
+
+          setControlSend(2);
+
+          break;
+        case 2:
+          setSuma(suma + valor2);
+
+          socket.emit("sendVal", {
+            quest: 2,
+            sum: suma + valor2,
+            val: valor2,
+            fase: 1
+          });
+
+          setControlSend(4);
+
+          break;
+        case 3:
+          setSuma(suma + valor3);
+
+          socket.emit("sendVal", {
+            quest: 3,
+            sum: suma + valor3,
+            val: valor3,
+            fase: 1
+          });
+
+          setControlSend(6);
+
+          break;
+        case 4:
+          setSuma(suma + valor4);
+
+          socket.emit("sendVal", {
+            quest: 4,
+            sum: suma + valor4,
+            val: valor4,
+            fase: 1
+          });
+
+          setControlSend(8);
+
+          break;
+        case 5:
+          setSuma(suma + valor5);
+          socket.emit("sendVal", {
+            quest: 5,
+            sum: suma + valor5,
+            val: valor5,
+            fase: 1
+          });
+
+          setControlSend(10);
+
+          break;
+        default:
+          break;
+      }
     }
   };
 
   useEffect(() => {
-    console.log(
-      "valor1:",
-      valor1,
-      " valor2:",
-      valor2,
-      " valor3:",
-      valor3,
-      " valor4:",
-      valor4,
-      " valor5:",
-      valor5
-    );
-
-    if (valor1 > 0 && valor2 > 0 && valor3 > 0 && valor4 > 0 && valor5 > 0) {
+    if (selector1 !== "" && selector2 !== "" && selector3 !== "" && selector4 !== "" && selector5 !== "") {
       setControlAllRes(true);
     }
   }, [selector1, selector2, selector3, selector4, selector5]);
@@ -209,7 +330,7 @@ const DuoControl = () => {
       {inicio ? (
         <div id="controlDuo">
           {valor1 > 0 ? (
-            <div>{fase2 ? <h1>Fase 2</h1> : <h1>Fase 1</h1>}</div>
+            <div>{fase2 ? <h1>Fase 2 {controlSend}</h1> : <h1>Fase 1 {controlSend}</h1>}</div>
           ) : (
             <div>
               <div>
@@ -284,11 +405,15 @@ const DuoControl = () => {
                   // Convertimos el string del input a un número real en JavaScript
                   onChange={(e) => setValor1(Number(e.target.value))}
                   placeholder="0"
-                  style={{ width: '20vw', padding:'8px', boxSizing: 'border-box' }}
+                  style={{ width: '20vw', padding: '8px', boxSizing: 'border-box' }}
                 />
               </div>
+              <div>
+                <button disabled={controlAllRes === false} onClick={() => { handlerRes(1) }}>Mandar reespuestas</button>
+                <button disabled={controlSend !== 1 && controlSend !== 11} onClick={() => { handlerPoints(1) }}>Mandar Puntos</button>
+              </div>
             </div>
-
+            {/*            Pregunta 2           */}
             <div>
               <div><h1>{realData[selector].title2}</h1></div>
               <div>
@@ -343,12 +468,16 @@ const DuoControl = () => {
                   // Convertimos el string del input a un número real en JavaScript
                   onChange={(e) => setValor2(Number(e.target.value))}
                   placeholder="0"
-                  style={{ width: '20vw', padding:'8px', boxSizing: 'border-box' }}
+                  style={{ width: '20vw', padding: '8px', boxSizing: 'border-box' }}
                 />
+              </div>
+              <div>
+                <button disabled={controlSend !== 2 && controlSend !== 12} onClick={() => { handlerRes(2) }}>Mandar reespuestas</button>
+                <button disabled={controlSend !== 3 && controlSend !== 13} onClick={() => { handlerPoints(2) }}>Mandar Puntos</button>
               </div>
             </div>
           </div>
-
+          {/*        Pregunta 3           */}
           <div>
             <div>
               <div><h1>{realData[selector].title3}</h1></div>
@@ -404,10 +533,15 @@ const DuoControl = () => {
                   // Convertimos el string del input a un número real en JavaScript
                   onChange={(e) => setValor3(Number(e.target.value))}
                   placeholder="0"
-                  style={{ width: '20vw', padding:'8px', boxSizing: 'border-box' }}
+                  style={{ width: '20vw', padding: '8px', boxSizing: 'border-box' }}
                 />
               </div>
+              <div>
+                <button disabled={controlSend !== 4 && controlSend !== 14} onClick={() => { handlerRes(3) }}>Mandar reespuestas</button>
+                <button disabled={controlSend !== 5 && controlSend !== 15} onClick={() => { handlerPoints(3) }}>Mandar Puntos</button>
+              </div>
             </div>
+            {/*              Pregunta 4                  */}
             <div>
               <div><h1>{realData[selector].title4}</h1></div>
               <div>
@@ -462,12 +596,16 @@ const DuoControl = () => {
                   // Convertimos el string del input a un número real en JavaScript
                   onChange={(e) => setValor4(Number(e.target.value))}
                   placeholder="0"
-                  style={{ width: '20vw', padding:'8px', boxSizing: 'border-box' }}
+                  style={{ width: '20vw', padding: '8px', boxSizing: 'border-box' }}
                 />
+              </div>
+              <div>
+                <button disabled={controlSend !== 6 && controlSend !== 16} onClick={() => { handlerRes(4) }}>Mandar reespuestas</button>
+                <button disabled={controlSend !== 7 && controlSend !== 17} onClick={() => { handlerPoints(4) }}>Mandar Puntos</button>
               </div>
             </div>
           </div>
-
+          {/*                Pregunta 5               */}
           <div>
             <div>
               <div><h1>{realData[selector].title5}</h1></div>
@@ -523,13 +661,30 @@ const DuoControl = () => {
                   // Convertimos el string del input a un número real en JavaScript
                   onChange={(e) => setValor5(Number(e.target.value))}
                   placeholder="0"
-                  style={{ width: '20vw', padding:'8px', boxSizing: 'border-box' }}
+                  style={{ width: '20vw', padding: '8px', boxSizing: 'border-box' }}
                 />
+              </div>
+              <div>
+                <button disabled={controlSend !== 8 && controlSend !== 18} onClick={() => { handlerRes(5) }}>Mandar reespuestas</button>
+                <button disabled={controlSend !== 9 && controlSend !== 19} onClick={() => { handlerPoints(5) }}>Mandar Puntos</button>
               </div>
             </div>
 
             <div>
+              <div>
+                {suma}
+              </div>
+              <div>
+                {
+                  controlSend === 10 ?
+                    <button onClick={() => {
+                      setFase2(true)
+                      setControlAllRes(true)
+                    }}>Fase 2</button>
+                    : null
+                }
 
+              </div>
             </div>
           </div>
         </div>
