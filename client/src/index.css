@@ -15,7 +15,7 @@
   -moz-osx-font-smoothing: grayscale;
   --color-quest: rgba(36, 189, 22, 0.226);
   --color-answer: rgba(116, 153, 253, 0.616);
-  --color-points-answer: rgb(80, 125, 248);
+  --color-points-answer: rgb(153, 80, 248);
   --color-hover-btn: #9dd691;
   --color-btn: rgb(235, 240, 241);
   --color-btn-press: rgb(111, 148, 252);
