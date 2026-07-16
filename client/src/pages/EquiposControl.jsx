@@ -1,6 +1,9 @@
 import { getQ100 } from "../services/routes";
 import { useEffect, useState, useRef } from "react";
 import socket from "../socket/socket";
+import error from '../assets/error.mp3'
+import bien from '../assets/level.mp3'
+import dragon from '../assets/dragon.mp3'
 
 const EquiposControl = () => {
   // ==================== ESTADO GENERAL ====================
@@ -58,6 +61,10 @@ const EquiposControl = () => {
 
   // ==================== FUNCIONES DE PUNTOS ====================
   const sendValors = (number, puntosBefore) => {
+    const audio = new Audio(bien);
+    
+    number !== 0 ? audio.play(): null
+        
     let puntos = puntosBefore * multi;
     if (modoLibre) {
       setTimeout(() => {
@@ -83,6 +90,8 @@ const EquiposControl = () => {
   };
 
   const sendStrike = () => {
+    const audio = new Audio(error);
+        audio.play();
     if (strike === 2) {
       setStrike(strike + 1);
       if (selectTeam) {
@@ -191,7 +200,10 @@ const EquiposControl = () => {
         team: e.button === 0 ? 1 : 2,
         timestamp: Date.now() 
       });
-
+      
+      const audio = new Audio(dragon);
+          audio.play();
+          
       // 4. Liberamos el candado después de 200ms para evitar el "rebote" físico
       setTimeout(() => {
         if (e.button === 0) {
