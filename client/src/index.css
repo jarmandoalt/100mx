@@ -22,7 +22,7 @@
   --color-btn-press-letra: rgb(66, 64, 64);
   --bg-color: #1a1a1a;
   --board-bg: #1a1919;
-  --number-off: #292953;
+  --number-off: #2f2f35;
   --number-on: #f7f3fc;
   --light-off: #8c8c00;
   --light-on: #ffeb3b;
@@ -39,16 +39,16 @@ button {
   position: absolute;
   bottom: 2vw;
   right: 3vw;
-  width: 3.5vw;
-  height: 3.5vw;
+  width: 2.5vw;
+  height: 2.5vw;
   border-radius: 50%;
   border: none;
   background-color: var(--color-hover-btn);
 }
 
-#btnScreen > img {
+#btnScreen>img {
   color: whitesmoke;
-  width: 2vw;
+  width: 1.3vw;
 }
 
 .board-wrapper {
@@ -98,36 +98,42 @@ button {
   width: 80px;
   height: 10px;
 }
+
 .b {
   top: 12px;
   left: 90px;
   width: 10px;
   height: 68px;
 }
+
 .c {
   top: 90px;
   left: 90px;
   width: 10px;
   height: 68px;
 }
+
 .d {
   bottom: 10px;
   left: 15px;
   width: 80px;
   height: 10px;
 }
+
 .e {
   top: 90px;
   left: 10px;
   width: 10px;
   height: 68px;
 }
+
 .f {
   top: 12px;
   left: 10px;
   width: 10px;
   height: 68px;
 }
+
 .g {
   top: 80px;
   left: 15px;
@@ -158,23 +164,28 @@ button {
 .lights-top {
   top: 0;
 }
+
 .lights-bottom {
   bottom: 0;
 }
+
 .lights-left {
   left: 0;
 }
+
 .lights-right {
   right: 0;
 }
 
 
 @keyframes blink-light {
+
   0%,
   100% {
     background-color: var(--light-off);
     box-shadow: inset 0 0 1px rgba(2, 2, 2, 0.5);
   }
+
   50% {
     background-color: var(--light-on);
     box-shadow: 0 0 15px var(--light-on), 0 0 25px var(--light-on);
@@ -187,42 +198,49 @@ button {
     width: 60px;
     height: 100px;
   }
+
   .a {
     top: 0;
     left: 10px;
     width: 40px;
     height: 8px;
   }
+
   .b {
     top: 12px;
     left: 50px;
     width: 8px;
     height: 40px;
   }
+
   .c {
     top: 60px;
     left: 50px;
     width: 8px;
     height: 40px;
   }
+
   .d {
     bottom: 0;
     left: 10px;
     width: 40px;
     height: 8px;
   }
+
   .e {
     top: 60px;
     left: 10px;
     width: 8px;
     height: 40px;
   }
+
   .f {
     top: 12px;
     left: 10px;
     width: 8px;
     height: 40px;
   }
+
   .g {
     top: 48px;
     left: 10px;
@@ -234,9 +252,11 @@ button {
     width: 15px;
     height: 15px;
   }
+
   .number-board {
     gap: 10px;
   }
+
   .board-wrapper {
     padding: 10px;
   }
@@ -251,10 +271,10 @@ button {
   height: 70vh;
   flex-direction: column;
   justify-content: center;
-  
+
 }
 
-#divHome > div {
+#divHome>div {
   display: flex;
   width: 70vw;
   justify-content: center;
@@ -262,7 +282,7 @@ button {
   margin-bottom: 2vh;
 }
 
-#divHome > div > button {
+#divHome>div>button {
   width: 55vw;
   cursor: pointer;
   font-size: 6vw;
@@ -272,7 +292,7 @@ button {
   border: none;
 }
 
-#divHome > div > button:hover {
+#divHome>div>button:hover {
   width: 55vw;
   cursor: pointer;
   background-color: var(--color-hover-btn);
@@ -283,19 +303,19 @@ button {
   display: flex;
   flex-direction: column;
   width: 99vw;
-  background: radial-gradient(circle, rgba(32,45,92,1) 0%, rgba(10,16,31,1) 100%);
   position: fixed;
   width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
-  z-index: -1; /* Asegura que esté detrás de todo */
+  z-index: -1;
+  /* Asegura que esté detrás de todo */
 }
 
-#divEquipos > div:first-child {
+#divEquipos>div:first-child {
   position: absolute;
   display: flex;
-  top: 2vh;
+  top: 6vh; /* 2vh si es con title */
   left: 0.5vw;
   flex-direction: row;
   justify-content: space-around;
@@ -303,63 +323,65 @@ button {
   width: 99vw;
 }
 
-#divEquipos > div:first-child > div {
-  width: 35vw;
-
+#divEquipos>div:first-child>div {
+  width: 25vw;
 }
 
-#divEquipos > div:first-child > div:nth-child(2) {
+#divEquipos>div:first-child>div:nth-child(2) {
   width: 25vw;
 }
 
 
-#divEquipos > div:first-child > div > div {
+#divEquipos>div:first-child>div>div {
   text-align: center;
-  
-  border-radius: 25px;
+  width: auto;
+  height: auto;
+  border-radius: 15px;
 }
 
-#divEquipos > div:first-child > div > div.select {
-  background-color: #333b68;
+#divEquipos>div:first-child>div>div.select {
+  background-color: #23f75017;
   margin-top: -4vh;
-  height: 20vh;
-/* 1. EL BORDE INTERNO (Tubo de neón apagado o base) */
-    border: 4px solid #f9faf8;
+  height: 28vh;
+  width: auto;
+  /* 1. EL BORDE INTERNO (Tubo de neón apagado o base) */
+  border: 1px solid #f9faf8;
 
-    /* 2. EL RESPLANDOR DEL TEXTO (Hará que las letras brillen) */
-    text-shadow:
-      0 0 2px #fff,
-      0 0 2px #fff,
-      0 0 2px #f7f6f1, /* Amarillo intenso */
-      0 0 2px #f0efe9,
-      0 0 2px #f1f1ea;
+  /* 2. EL RESPLANDOR DEL TEXTO (Hará que las letras brillen) */
+  text-shadow:
+    0 0 2px #fff,
+    0 0 2px #fff,
+    0 0 2px #f7f6f1,
+    /* Amarillo intenso */
+    0 0 2px #f0efe9,
+    0 0 2px #f1f1ea;
 
-    /* 3. EL RESPLANDOR DEL BORDE (El efecto de luces alrededor) */
-    box-shadow:
-      /* Resplandor externo */
-      0 0 10px #a4e451,
-      0 0 20px #9ae741,
-      0 0 50px #a7f32c,
-      /* Resplandor interno para dar volumen */
-      inset 0 0 5px #8ef739;
+  /* 3. EL RESPLANDOR DEL BORDE (El efecto de luces alrededor) */
+  box-shadow:
+    /* Resplandor externo */
+    0 0 10px #a4e451,
+    0 0 10px #9ae741,
+    0 0 10px #a7f32c,
+    /* Resplandor interno para dar volumen */
+    inset 0 0 5px #8ef739;
 }
 
-#divEquipos > div:first-child > div > div > h1 {
+#divEquipos>div:first-child>div>div>h1 {
   margin-top: 1vh;
   font-size: 3vw;
   max-width: 35vw;
   color: rgb(250, 250, 250);
-  
+
 }
 
-#divEquipos > div:first-child > div > div > h1:nth-child(2) {
+#divEquipos>div:first-child>div>div>h1:nth-child(2) {
   font-size: 4.5vw;
   margin-top: -5vh;
 }
 
 /*Strike*/
 
-#divEquipos > div:nth-child(2) {
+#divEquipos>div:nth-child(2) {
   height: 65vh;
   width: 90vw;
   position: absolute;
@@ -373,7 +395,7 @@ button {
 
 /*Titulo pregunta Q100*/
 
-#divEquipos > div:nth-child(2)> div:first-child > h1 {
+#divEquipos>div:nth-child(2)>div:first-child>h1 {
   height: auto;
   background-color: var(--color-quest);
   font-size: 2.3vw;
@@ -381,170 +403,185 @@ button {
   border-radius: 18px;
   text-align: center;
   font-family: 'Archivo Black', sans-serif;
-    text-transform: uppercase;
-    color: #fff; /* Texto blanco para el centro de la luz */
-    padding: 20px 40px;
-    border-radius: 15px; /* Bordes suaves */
-    position: relative;
-    background-color: rgba(255, 255, 0, 0.05); /* Un tinte amarillo muy suave de fondo */
+  text-transform: uppercase;
+  color: #fff;
+  /* Texto blanco para el centro de la luz */
+  padding: 20px 40px;
+  border-radius: 15px;
+  /* Bordes suaves */
+  position: relative;
+  background-color: rgba(255, 255, 0, 0.05);
+  /* Un tinte amarillo muy suave de fondo */
 
-    /* 1. EL BORDE INTERNO (Tubo de neón apagado o base) */
-    border: 4px solid #fff;
+  /* 1. EL BORDE INTERNO (Tubo de neón apagado o base) */
+  border: 1px solid #fff;
 
-    /* 2. EL RESPLANDOR DEL TEXTO (Hará que las letras brillen) */
-    text-shadow:
-      0 0 2px #fff,
-      0 0 2px #fff,
-      0 0 2px #fcfbf8, /* Amarillo intenso */
-      0 0 3px #f3f3ef,
-      0 0 2px #f3f2ea;
+  /* 2. EL RESPLANDOR DEL TEXTO (Hará que las letras brillen) */
+  text-shadow:
+    0 0 2px #fff,
+    0 0 2px #fff,
+    0 0 2px #fcfbf8,
+    /* Amarillo intenso */
+    0 0 3px #f3f3ef,
+    0 0 2px #f3f2ea;
 
-    /* 3. EL RESPLANDOR DEL BORDE (El efecto de luces alrededor) */
-    box-shadow:
-      /* Resplandor externo */
-      0 0 10px #fff,
-      0 0 20px #ffea00,
-      0 0 50px #ffea00,
-      /* Resplandor interno para dar volumen */
-      inset 0 0 15px #ffea00;
+  /* 3. EL RESPLANDOR DEL BORDE (El efecto de luces alrededor) */
+  box-shadow:
+    /* Resplandor externo */
+    0 0 1px #fff,
+    0 0 2px #ffea00,
+    0 0 5px #ffea00,
+    /* Resplandor interno para dar volumen */
+    inset 0 0 1px #ffea00;
 
-    /* 4. ANIMACIÓN (Opcional: hace que las luces parpadeen ligeramente) */
-    animation: parpadeo 1.5s infinite alternate;
+  /* 4. ANIMACIÓN (Opcional: hace que las luces parpadeen ligeramente) */
+  animation: parpadeo 1.5s infinite alternate;
 }
 
 @keyframes parpadeo {
-    0%, 100% {
-      opacity: 1;
-      box-shadow:
-        0 0 10px #fff,
-        0 0 20px #ffea00,
-        0 0 50px #ffea00,
-        inset 0 0 15px #ffea00;
-    }
-    92% {
-      opacity: 1;
-    }
-    93% {
-      opacity: 0.9; /* Pequeño bajón de luz */
-      box-shadow:
-        0 0 5px #fff,
-        0 0 10px #ffea00,
-        0 0 30px #ffea00,
-        inset 0 0 10px #ffea00;
-    }
-    94% {
-      opacity: 1;
-    }
+
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow:
+      0 0 10px #fff,
+      0 0 20px #ffea00,
+      0 0 50px #ffea00,
+      inset 0 0 15px #ffea00;
   }
 
-  #divEquipos > div:nth-child(2) > div:last-child {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
+  92% {
+    opacity: 1;
+  }
+
+  93% {
+    opacity: 0.9;
+    /* Pequeño bajón de luz */
+    box-shadow:
+      0 0 5px #fff,
+      0 0 10px #ffea00,
+      0 0 30px #ffea00,
+      inset 0 0 10px #ffea00;
+  }
+
+  94% {
+    opacity: 1;
+  }
+}
+
+#divEquipos>div:nth-child(2)>div:last-child {
+  display: flex;
+  flex-direction: column;
+  margin-top: 13vh; /* solo si no tiene titulo */
+  align-items: center;
+  width: 90vw;
+  justify-content: start;
   background-color: var(--color-quest);
   color: #fafaf4;
-  border-radius: 10px;
   text-align: center;
   font-family: 'Archivo Black', sans-serif;
-    border-radius: 15px; /* Bordes suaves */
-    position: relative;
-    background-color: rgba(255, 255, 0, 0.05); /* Un tinte amarillo muy suave de fondo */
+  border-radius: 15px;
+  /* Bordes suaves */
+  position: relative;
+  background-color: rgba(255, 255, 0, 0.05);
+  /* Un tinte amarillo muy suave de fondo */
 
-    /* 1. EL BORDE INTERNO (Tubo de neón apagado o base) */
-    border: 4px solid #f1f0ec;
+  /* 1. EL BORDE INTERNO (Tubo de neón apagado o base) */
+  border: 1px solid #f1f0ec;
 
-    /* 2. EL RESPLANDOR DEL TEXTO (Hará que las letras brillen) */
-    text-shadow:
-      0 0 2px #fff,
-      0 0 4px #fff,
-      0 0 6px #f7f6f1, /* Amarillo intenso */
-      0 0 8px #f0efe9,
-      0 0 10px #f1f1ea;
+  /* 2. EL RESPLANDOR DEL TEXTO (Hará que las letras brillen) */
+  text-shadow:
+    0 0 2px #fff,
+    0 0 4px #fff,
+    0 0 6px #f7f6f1,
+    /* Amarillo intenso */
+    0 0 8px #f0efe9,
+    0 0 10px #f1f1ea;
 
-    /* 3. EL RESPLANDOR DEL BORDE (El efecto de luces alrededor) */
-    box-shadow:
-      /* Resplandor externo */
-      0 0 10px #fff,
-      0 0 20px #eee587,
-      0 0 50px #f1e990,
-      /* Resplandor interno para dar volumen */
-      inset 0 0 15px #eee9b0;
+  /* 3. EL RESPLANDOR DEL BORDE (El efecto de luces alrededor) */
+  box-shadow:
+    /* Resplandor externo */
+    0 0 1px #fff,
+    0 0 2px #eee587,
+    0 0 5px #f1e990,
+    /* Resplandor interno para dar volumen */
+    inset 0 0 1px #eee9b0;
 
-  }
+}
 
-#divEquipos > div:nth-child(2) > div:last-child > div {
+#divEquipos>div:nth-child(2)>div:last-child>div {
   display: flex;
   flex-direction: row;
   padding: 0 20px;
   margin-top: -7.5vh;
 }
 
-#divEquipos > div:nth-child(2) > div:last-child > div:first-child {
+#divEquipos>div:nth-child(2)>div:last-child>div:first-child {
   margin-top: 0vh;
 }
 
 /*Respuestas Q100*/
 
-#divEquipos > div:nth-child(2)> div:last-child > div > h2:first-child {
-  background-color:#9481aa34;
-  width: 15vw;
-  width: 59vw;
+#divEquipos>div:nth-child(2)>div:last-child>div>h2:first-child {
+  background-color: #9481aa34;
+  width: 69vw;
   border-radius: 18px 0 0 18px;
-  font-size: 2.7vw;
+  font-size: 3vw;
   text-align: center;
-   /* 1. EL BORDE INTERNO (Tubo de neón apagado o base) */
-    border: 2px solid #2d6cbe;
+  /* 1. EL BORDE INTERNO (Tubo de neón apagado o base) */
+  border: 2px solid #2d6cbe;
 
-    /* 2. EL RESPLANDOR DEL TEXTO (Hará que las letras brillen) */
-    text-shadow:
-      0 0 2px #fff,
-      0 0 2px #fff,
-      0 0 2px #f7f6f1, /* Amarillo intenso */
-      0 0 2px #f0efe9,
-      0 0 2px #f1f1ea;
+  /* 2. EL RESPLANDOR DEL TEXTO (Hará que las letras brillen) */
+  text-shadow:
+    0 0 2px #fff,
+    0 0 2px #fff,
+    0 0 2px #f7f6f1,
+    /* Amarillo intenso */
+    0 0 2px #f0efe9,
+    0 0 2px #f1f1ea;
 
-    /* 3. EL RESPLANDOR DEL BORDE (El efecto de luces alrededor) */
-    box-shadow:
-      /* Resplandor externo */
-      0 0 5px #6391f3,
-      0 0 5px #51b2f3,
-      0 0 5px #6497e4be,
-      /* Resplandor interno para dar volumen */
-      inset 0 0 5px #4b6fb3;
+  /* 3. EL RESPLANDOR DEL BORDE (El efecto de luces alrededor) */
+  box-shadow:
+    /* Resplandor externo */
+    0 0 5px #6391f3,
+    0 0 5px #51b2f3,
+    0 0 5px #6497e4be,
+    /* Resplandor interno para dar volumen */
+    inset 0 0 5px #4b6fb3;
 }
 
-#divEquipos > div:nth-child(2)> div:last-child > div > h2:last-child {
+#divEquipos>div:nth-child(2)>div:last-child>div>h2:last-child {
   background-color: #9481aa34;
   width: 15vw;
-  font-size: 2.7vw;
+  font-size: 3vw;
   border-radius: 0 18px 18px 0;
   margin-left: 0.5vw;
   text-align: center;
   /* 1. EL BORDE INTERNO (Tubo de neón apagado o base) */
-    border: 2px solid #b375ec;
+  border: 2px solid #b375ec;
 
-    /* 2. EL RESPLANDOR DEL TEXTO (Hará que las letras brillen) */
-    text-shadow:
-      0 0 2px #fff,
-      0 0 2px #fff,
-      0 0 2px #f7f6f1, /* Amarillo intenso */
-      0 0 2px #f0efe9,
-      0 0 2px #f1f1ea;
+  /* 2. EL RESPLANDOR DEL TEXTO (Hará que las letras brillen) */
+  text-shadow:
+    0 0 2px #fff,
+    0 0 2px #fff,
+    0 0 2px #f7f6f1,
+    /* Amarillo intenso */
+    0 0 2px #f0efe9,
+    0 0 2px #f1f1ea;
 
-    /* 3. EL RESPLANDOR DEL BORDE (El efecto de luces alrededor) */
-    box-shadow:
-      /* Resplandor externo */
-      0 0 5px #a26beb,
-      0 0 5px #8752cc,
-      0 0 5px #9b50f0,
-      /* Resplandor interno para dar volumen */
-      inset 0 0 5px #8b3ed3;
+  /* 3. EL RESPLANDOR DEL BORDE (El efecto de luces alrededor) */
+  box-shadow:
+    /* Resplandor externo */
+    0 0 5px #a26beb,
+    0 0 5px #8752cc,
+    0 0 5px #9b50f0,
+    /* Resplandor interno para dar volumen */
+    inset 0 0 5px #8b3ed3;
 }
 
 /*Control 100 */
 
-#divEquiposControl > div {
+#divEquiposControl>div {
   display: flex;
   flex-direction: row;
   width: 100vw;
@@ -552,7 +589,7 @@ button {
   margin-top: 5vh;
 }
 
-#divEquiposControl > div:nth-child(2) {
+#divEquiposControl>div:nth-child(2) {
   display: flex;
   flex-direction: row;
   width: 100vw;
@@ -561,8 +598,8 @@ button {
 }
 
 
-/*Aplica cuando estan los input para agregar los nombres de los equipos*/ 
-#divEquiposControl > div.divInputsTeam {
+/*Aplica cuando estan los input para agregar los nombres de los equipos*/
+#divEquiposControl>div.divInputsTeam {
   display: flex;
   flex-direction: column;
   width: 90vw;
@@ -570,24 +607,24 @@ button {
   justify-content: center;
 }
 
-#divEquiposControl > div.divInputsTeam > div:first-child {
+#divEquiposControl>div.divInputsTeam>div:first-child {
   display: flex;
   flex-direction: row;
   width: 90vw;
   justify-content: center;
 }
 
-#divEquiposControl > div.divInputsTeam > div:first-child > h1 {
+#divEquiposControl>div.divInputsTeam>div:first-child>h1 {
   width: 50vw;
   text-align: center;
-  background-color:var(--color-hover-btn);
-  font-size: 2.5vw;  
+  background-color: var(--color-hover-btn);
+  font-size: 2.5vw;
   margin-left: 10vw;
   border-radius: 10px;
   color: whitesmoke;
 }
 
-#divEquiposControl > div.divInputsTeam > div:last-child {
+#divEquiposControl>div.divInputsTeam>div:last-child {
   display: flex;
   flex-direction: row;
   width: 90vw;
@@ -596,17 +633,17 @@ button {
   justify-content: center;
 }
 
-#divEquiposControl > div.divInputsTeam > div:last-child > div{
-margin-right: 3vw;
+#divEquiposControl>div.divInputsTeam>div:last-child>div {
+  margin-right: 3vw;
 }
 
-#divEquiposControl > div.divInputsTeam > div:last-child > div > input {
-    background-color:var(--color-hover-btn);
+#divEquiposControl>div.divInputsTeam>div:last-child>div>input {
+  background-color: var(--color-hover-btn);
 
 }
 
-#divEquiposControl > div.divInputsTeam > div:last-child > div > input {
-  background-color:var(--color-hover-btn);
+#divEquiposControl>div.divInputsTeam>div:last-child>div>input {
+  background-color: var(--color-hover-btn);
   border: none;
   width: 25vw;
   height: 6vh;
@@ -615,7 +652,7 @@ margin-right: 3vw;
   border-radius: 5px;
 }
 
-#divEquiposControl > div.divInputsTeam > div:last-child > div > button {
+#divEquiposControl>div.divInputsTeam>div:last-child>div>button {
   width: 15vw;
   height: 6vh;
   background-color: var(--color-btn);
@@ -625,14 +662,14 @@ margin-right: 3vw;
   font-size: 1.5vw;
 }
 
-#divEquiposControl > div.divInputsTeam > div:last-child > div > button:hover {
+#divEquiposControl>div.divInputsTeam>div:last-child>div>button:hover {
   background-color: var(--color-hover-btn);
   color: rgb(66, 67, 70);
 }
 
 /*btn selector equipo */
 
-#divEquiposControl > div:first-child > h1 {
+#divEquiposControl>div:first-child>h1 {
   border: none;
   margin-left: 2vw;
   width: 45vw;
@@ -643,14 +680,14 @@ margin-right: 3vw;
   background-color: #38383f;
 }
 
-#divEquiposControl > div:first-child > h1.uno {
+#divEquiposControl>div:first-child>h1.uno {
   font-size: 3vw;
   border: none;
   border-radius: 5px;
   color: whitesmoke
 }
 
-#divEquiposControl > div:first-child > h1.dos {
+#divEquiposControl>div:first-child>h1.dos {
   font-size: 3vw;
   border: none;
   border-radius: 5px;
@@ -659,21 +696,21 @@ margin-right: 3vw;
 
 /*btns apretados selector de equipo*/
 
-#divEquiposControl > div:first-child > h1.uno.btn {
+#divEquiposControl>div:first-child>h1.uno.btn {
   font-size: 3vw;
   text-align: center;
   color: rgb(161, 165, 98);
 }
 
 
-#divEquiposControl > div:first-child > h1.dos.btn {
+#divEquiposControl>div:first-child>h1.dos.btn {
   text-align: center;
   font-size: 3vw;
   text-align: center;
   color: rgb(161, 165, 98);
 }
 
-#divEquiposControl > div:first-child > div > button {
+#divEquiposControl>div:first-child>div>button {
   height: 5vw;
   padding: 0 1vw 0 1vw;
   font-size: 1.5vw;
@@ -689,17 +726,17 @@ margin-right: 3vw;
   cursor: pointer;
 
   /* Sombra sólida hacia abajo */
-  box-shadow: 0 6px 0 #2a5379; 
+  box-shadow: 0 6px 0 #2a5379;
   transition: all 0.1s;
 }
 
-#divEquiposControl > div:first-child > div > button:hover {
-color: #e9e7f3;
+#divEquiposControl>div:first-child>div>button:hover {
+  color: #e9e7f3;
   background-color: var(--color-hover-btn);
 }
 
-#divEquiposControl > div:first-child > div > button:active {
-background-color: var(--color-hover-btn);
+#divEquiposControl>div:first-child>div>button:active {
+  background-color: var(--color-hover-btn);
   box-shadow: 0 2px 0 #536b4f;
   transform: translateY(4px);
 }
@@ -708,10 +745,11 @@ background-color: var(--color-hover-btn);
 
 h2.alerta-activada-pulso {
   font-family: sans-serif;
-  color: #c0392b; /* Rojo base */
+  color: #c0392b;
+  /* Rojo base */
   text-transform: uppercase;
   letter-spacing: 1px;
-  
+
   /* Nombre de la animación, duración, forma y repetición infinita */
   animation: pulsoAlerta 1.5s ease-in-out infinite;
 }
@@ -722,15 +760,17 @@ h2.alerta-activada-pulso {
     /* Sombra inicial suave */
     text-shadow: 0 0 5px rgba(192, 57, 43, 0.5);
   }
-  
+
   50% {
-    transform: scale(1.53); /* Ligeramente más grande */
+    transform: scale(1.53);
+    /* Ligeramente más grande */
     /* Resplandor intenso al 50% */
-    text-shadow: 0 0 20px rgba(192, 57, 43, 1), 
-                 0 0 30px rgba(231, 76, 60, 0.8);
-    color: #e74c3c; /* Tono de rojo más brillante */
+    text-shadow: 0 0 20px rgba(192, 57, 43, 1),
+      0 0 30px rgba(231, 76, 60, 0.8);
+    color: #e74c3c;
+    /* Tono de rojo más brillante */
   }
-  
+
   100% {
     transform: scale(1.5);
     /* Vuelve a la sombra inicial */
@@ -738,7 +778,7 @@ h2.alerta-activada-pulso {
   }
 }
 
-#divEquiposControl > div:nth-child(2) {
+#divEquiposControl>div:nth-child(2) {
   display: flex;
   flex-direction: row;
   width: 95vw;
@@ -746,7 +786,7 @@ h2.alerta-activada-pulso {
   align-items: center;
 }
 
-#divEquiposControl > div:nth-child(2) > div {
+#divEquiposControl>div:nth-child(2)>div {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -755,7 +795,7 @@ h2.alerta-activada-pulso {
   justify-content: space-around;
 }
 
-#divEquiposControl > div:nth-child(2) > div > div {
+#divEquiposControl>div:nth-child(2)>div>div {
   width: 90vw;
   display: flex;
   justify-content: space-around;
@@ -763,7 +803,7 @@ h2.alerta-activada-pulso {
 
 /*button Reset/Select/Strike*/
 
-#divEquiposControl > div:nth-child(2) > div > div > button {
+#divEquiposControl>div:nth-child(2)>div>div>button {
   height: 12vh;
   padding: 0 1vw 0 1vw;
   font-size: 1.5vw;
@@ -779,26 +819,26 @@ h2.alerta-activada-pulso {
   cursor: pointer;
 
   /* Sombra sólida hacia abajo */
-  box-shadow: 0 6px 0 #2a5379; 
+  box-shadow: 0 6px 0 #2a5379;
   transition: all 0.1s;
 }
 
-#divEquiposControl > div:nth-child(2) > div > div > button:active {
-box-shadow: 0 2px 0 #2a5379; 
-height: 11.8vh;
+#divEquiposControl>div:nth-child(2)>div>div>button:active {
+  box-shadow: 0 2px 0 #2a5379;
+  height: 11.8vh;
   transform: translateY(4px);
 }
 
-#divEquiposControl > div:nth-child(2) > div > div > label {
-color: whitesmoke;
+#divEquiposControl>div:nth-child(2)>div>div>label {
+  color: whitesmoke;
 }
 
-#divEquiposControl > div:nth-child(2) > div > div > button:hover {
+#divEquiposControl>div:nth-child(2)>div>div>button:hover {
   color: #e9e7f3;
   background-color: var(--color-hover-btn);
 }
 
-#divEquiposControl > div:nth-child(2) > div > div:last-child {
+#divEquiposControl>div:nth-child(2)>div>div:last-child {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -817,13 +857,13 @@ color: whitesmoke;
 }
 
 #btnDatos:hover {
-  background-color:var(--color-hover-btn);
+  background-color: var(--color-hover-btn);
   color: whitesmoke;
 }
 
 /*btn controlador numero de pregunta*/
 
-#divEquiposControl > div:nth-child(2) > div > div:last-child > button {
+#divEquiposControl>div:nth-child(2)>div>div:last-child>button {
   height: 4vw;
   padding: 0 1vw 0 1vw;
   font-size: 1.5vw;
@@ -839,12 +879,12 @@ color: whitesmoke;
   cursor: pointer;
 
   /* Sombra sólida hacia abajo */
-  box-shadow: 0 6px 0 #2a5379; 
+  box-shadow: 0 6px 0 #2a5379;
   transition: all 0.1s;
   margin-right: 2vw;
 }
 
-#divEquiposControl > div:nth-child(2) > div > div:last-child > button:hover {
+#divEquiposControl>div:nth-child(2)>div>div:last-child>button:hover {
   height: 5vw;
   width: 5vw;
   margin-left: 2vw;
@@ -853,14 +893,14 @@ color: whitesmoke;
   margin-right: 2vw;
 }
 
-#divEquiposControl > div:nth-child(3) {
+#divEquiposControl>div:nth-child(3) {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
 
-#divEquiposControl > div:nth-child(3) > div {
+#divEquiposControl>div:nth-child(3)>div {
   display: flex;
   flex-direction: row;
   width: 95vw;
@@ -868,7 +908,7 @@ color: whitesmoke;
   align-items: center;
 }
 
-#divEquiposControl > div:nth-child(3) > div > h1 {
+#divEquiposControl>div:nth-child(3)>div>h1 {
   width: 80vw;
   text-align: center;
   color: whitesmoke;
@@ -894,8 +934,8 @@ color: whitesmoke;
 
 /*btn selector de respuestas*/
 
-#divEquiposControl > div:nth-child(3) > div > button {
- height: 4vw;
+#divEquiposControl>div:nth-child(3)>div>button {
+  height: 4vw;
   padding: 0 1vw 0 1vw;
   font-size: 1.5vw;
   background-color: var(--color-btn);
@@ -910,24 +950,24 @@ color: whitesmoke;
   cursor: pointer;
 
   /* Sombra sólida hacia abajo */
-  box-shadow: 0 6px 0 #2a5379; 
+  box-shadow: 0 6px 0 #2a5379;
   transition: all 0.1s;
 }
 
-#divEquiposControl > div:nth-child(3) > div > button:hover {
+#divEquiposControl>div:nth-child(3)>div>button:hover {
   color: whitesmoke;
   background-color: var(--color-hover-btn);
 }
 
-#divEquiposControl > div:nth-child(3) > div > button.not {
+#divEquiposControl>div:nth-child(3)>div>button.not {
   cursor: not-allowed;
   background-color: var(--color-hover-btn);
   box-shadow: 0 2px 0 #536b4f;
   transform: translateY(4px);
 }
 
-#divEquiposControl > div:nth-child(4) > button {
-   height: 6vw;
+#divEquiposControl>div:nth-child(4)>button {
+  height: 6vw;
   padding: 0 1vw 0 1vw;
   font-size: 1.5vw;
   background-color: var(--color-btn);
@@ -942,11 +982,11 @@ color: whitesmoke;
   cursor: pointer;
 
   /* Sombra sólida hacia abajo */
-  box-shadow: 0 6px 0 #2a5379; 
+  box-shadow: 0 6px 0 #2a5379;
   transition: all 0.1s;
 }
 
-#divEquiposControl > div:nth-child(4) > button:hover {
+#divEquiposControl>div:nth-child(4)>button:hover {
   background-color: var(--color-hover-btn);
   color: whitesmoke;
 }
@@ -963,78 +1003,120 @@ color: whitesmoke;
 #divDuo {
   display: flex;
   margin-left: 1vw;
+  margin-top: 5vh;
   width: 90vw;
   flex-direction: column;
 }
 
-#divDuo > div:last-child {
+#divDuo>div:last-child {
   display: flex;
   flex-direction: row;
 }
 
-#divDuo > div:last-child > div {
+#divDuo>div:last-child>div {
   width: 45vw;
 }
 
-#divDuo > div:first-child {
+#divDuo>div:first-child {
   width: 90vw;
   margin-left: 2vw;
 }
 
-#divDuo > div:first-child > h1 {
+#divDuo>div:first-child>h1 {
   width: 88vw;
   background-color: #5b50fc;
   text-align: center;
   height: 10vh;
   text-align: center;
-  border-radius: 15px ;
+  border-radius: 15px;
 }
 
-#divDuo > div:last-child > div:last-child {
+#divDuo>div:last-child>div:last-child {
   display: flex;
   flex-direction: column;
   margin-left: 2vw;
 }
 
-#divDuo > div:last-child > div > div {
+#divDuo>div:last-child>div>div {
   display: flex;
   flex-direction: row;
   margin-top: 1vh;
 }
 
-#divDuo > div:last-child > div > div > div:first-child {
+#divDuo>div:last-child>div>div>div:first-child {
   width: 40vw;
   height: 10vh;
 }
 
-#divDuo > div:last-child > div > div > div:first-child > h1 {
+#divDuo>div:last-child>div>div>div:first-child>h1 {
   width: 40vw;
   padding: 0;
-  background-color: #713d86;
   margin: 0;
+  font-size: 3.5vw;
+  background-color: #9481aa34;
   text-align: center;
   height: 10vh;
   border-radius: 15px 0 0 15px;
+  border: 1px solid #f1f0ec;
+  /* 2. EL RESPLANDOR DEL TEXTO (Hará que las letras brillen) */
+  text-shadow:
+    0 0 2px #fff,
+    0 0 2px #fff,
+    0 0 2px #f7f6f1,
+    /* Amarillo intenso */
+    0 0 2px #f0efe9,
+    0 0 2px #f1f1ea;
+
+  /* 3. EL RESPLANDOR DEL BORDE (El efecto de luces alrededor) */
+  box-shadow:
+    /* Resplandor externo */
+    0 0 5px #6391f3,
+    0 0 5px #51b2f3,
+    0 0 5px #6497e4be,
+    /* Resplandor interno para dar volumen */
+    inset 0 0 5px #4b6fb3;
 }
 
-#divDuo > div:last-child > div > div > div:last-child {
+#divDuo>div:last-child>div>div>div:last-child {
   height: 10vh;
   width: 9vw;
   margin-left: 1px;
 }
 
-#divDuo > div:last-child > div > div > div:last-child > h1{
+#divDuo>div:last-child>div>div>div:last-child>h1 {
   height: 10vh;
   width: 5vw;
-  padding: 0;
+  font-size: 3.5vw;
   margin: 0;
-  background-color: #6481a8;
-  margin-left: 0.5vw;  
+  margin-left: 0.5vw;
   text-align: center;
   border-radius: 0 15px 15px 0;
+  background-color: rgba(255, 255, 0, 0.05);
+  /* Un tinte amarillo muy suave de fondo */
+
+  /* 1. EL BORDE INTERNO (Tubo de neón apagado o base) */
+  border: 1px solid #f1f0ec;
+
+  /* 2. EL RESPLANDOR DEL TEXTO (Hará que las letras brillen) */
+  text-shadow:
+    0 0 2px #fff,
+    0 0 2px #fff,
+    0 0 2px #f7f6f1,
+    /* Amarillo intenso */
+    0 0 2px #f0efe9,
+    0 0 2px #f1f1ea;
+
+  /* 3. EL RESPLANDOR DEL BORDE (El efecto de luces alrededor) */
+ box-shadow:
+    /* Resplandor externo */
+    0 0 5px #a26beb,
+    0 0 5px #8752cc,
+    0 0 5px #9b50f0,
+    /* Resplandor interno para dar volumen */
+    inset 0 0 5px #8b3ed3;
 }
 
-#controlDuo > div:first-child {
+#controlDuo>div:first-child {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1044,7 +1126,7 @@ color: whitesmoke;
   justify-content: space-around;
 }
 
-#controlDuo > div:first-child > div > button {
+#controlDuo>div:first-child>div>button {
   width: 3vw;
   height: 3vw;
   border-radius: 50%;
@@ -1053,7 +1135,7 @@ color: whitesmoke;
   color: var(--color-btn-press-letra);
 }
 
-#controlDuo > div:first-child > div > button:hover {
+#controlDuo>div:first-child>div>button:hover {
   background-color: var(--color-hover-btn);
   color: white;
 }
@@ -1091,9 +1173,9 @@ color: whitesmoke;
   top: 50%;
   transform-origin: 0% 0%;
   /* Calcula la rotación y el sesgo según el total de premios */
-  transform: rotate(calc(360deg / var(--total) * var(--i))) 
-             skewY(calc(90deg - (360deg / var(--total))));
-  background-color: hsl(calc(var(--i) * 45), 70%, 50%); /* Colores dinámicos */
+  transform: rotate(calc(360deg / var(--total) * var(--i))) skewY(calc(90deg - (360deg / var(--total))));
+  background-color: hsl(calc(var(--i) * 45), 70%, 50%);
+  /* Colores dinámicos */
   border: 1px solid #fff;
 }
 
@@ -1101,8 +1183,7 @@ color: whitesmoke;
   position: absolute;
   left: 20px;
   top: 30px;
-  transform: skewY(calc((90deg - (360deg / var(--total))) * -1)) 
-             rotate(15deg);
+  transform: skewY(calc((90deg - (360deg / var(--total))) * -1)) rotate(15deg);
   font-weight: bold;
   color: white;
   text-shadow: 1px 1px 2px #000;
@@ -1115,7 +1196,7 @@ color: whitesmoke;
   z-index: 10;
   font-size: 50px;
   color: rgb(229, 145, 145);
-  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
 }
 
 #modalStrike {
@@ -1129,25 +1210,26 @@ color: whitesmoke;
   align-items: center;
 }
 
-#divStrike{
-  position: absolute !important; 
+#divStrike {
+  position: absolute !important;
   padding: 0 !important;
 }
 
-#divStrike > h1 {
+#divStrike>h1 {
   position: absolute;
-  font-size: 24vw;
+  font-size: 35vw;
   color: rgb(216, 81, 76);
   text-shadow:
-      0 0 2px #af2020,
-      0 0 4px #f34141,
-      0 0 6px #f85353, /* Amarillo intenso */
-      0 0 8px #b42020,
-      0 0 10px #dd1d1d;
+    0 0 2px #af2020,
+    0 0 4px #f34141,
+    0 0 6px #f85353,
+    /* Amarillo intenso */
+    0 0 8px #b42020,
+    0 0 10px #dd1d1d;
   text-align: center;
   width: 90vw;
   height: 65vh !important;
   padding-top: 0 !important;
-  margin-top: 0 !important;
+  margin-top: -22vh !important;
   border-radius: 10px;
 }

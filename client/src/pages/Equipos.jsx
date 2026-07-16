@@ -225,7 +225,7 @@ const Equipos = () => {
       </div>
       {inicio === 0 ? (
         <div>
-          {selectorTitle ? (
+          {/* {selectorTitle ? (
             <div>
               <h1>------------ ------ --------------</h1>
             </div>
@@ -234,7 +234,7 @@ const Equipos = () => {
               <h1>{realData[selector].title}</h1>
             </div>
           )}
-
+ */}
           <div>
             {selector1 ? (
               <div>
@@ -296,7 +296,7 @@ const Equipos = () => {
         </div>
       ) : (
         <div>
-          {selectorTitle ? (
+          {/* {selectorTitle ? (
             <div>
               <h1>------------ ------ --------------</h1>
             </div>
@@ -305,7 +305,7 @@ const Equipos = () => {
               <h1>{realData[selector].title}</h1>
             </div>
           )}
-
+ */}
           <div>
             {selector1 ? (
               <div>

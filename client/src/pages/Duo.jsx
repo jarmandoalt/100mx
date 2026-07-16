@@ -3,6 +3,8 @@ import DigitDisplay from "./DigitDisplay";
 import { getQ5 } from "../services/routes";
 import { Socket } from "socket.io-client";
 import socket from "../socket/socket";
+import max  from "../../public/maximize.svg";
+import min  from "../../public/minimize.svg";
 
 const Duo = () => {
   const [selectorTitle, setSelectorTitle] = useState(true),
@@ -50,7 +52,8 @@ const Duo = () => {
     [selector, setSelector] = useState(0),
     [suma, setSuma] = useState(0),
     [realData, setRealData] = useState([]),
-    [inicio, setInicio] = useState(false);
+    [inicio, setInicio] = useState(false),
+    [isFullscreen, setIsFullscreen] = useState(false);
 
   const getData5 = async () => {
     const response = await getQ5();
@@ -146,7 +149,7 @@ const Duo = () => {
             break;
         }
       }
-      
+
     });
 
     socket.on("sendVal", (sendVal) => {
@@ -270,6 +273,28 @@ const Duo = () => {
     });
   }, [Socket]);
 
+  const handleToggleFullscreen = () => {
+    if (isFullscreen) {
+      // Si ya está en pantalla completa, sal del modo
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) { /* Safari */
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) { /* IE11 */
+        document.msExitFullscreen();
+      }
+    } else {
+      // Si no, entra en pantalla completa
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+      } else if (document.documentElement.webkitRequestFullscreen) { /* Safari */
+        document.documentElement.webkitRequestFullscreen();
+      } else if (document.documentElement.msRequestFullscreen) { /* IE11 */
+        document.documentElement.msRequestFullscreen();
+      }
+    }
+  };
+
   return (
     <div>
       <div className="number-board new">
@@ -325,6 +350,9 @@ const Duo = () => {
           </div>
         </div>
       </div>
+      <button id="btnScreen" onClick={handleToggleFullscreen}>
+        {isFullscreen ? <img src={min}></img> : <img src={max}></img>}
+      </button>
     </div>
   );
 };
